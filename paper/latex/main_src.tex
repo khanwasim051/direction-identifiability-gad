@@ -1,0 +1,448 @@
+%% DMKD submission draft -- Springer Nature LaTeX template (sn-jnl), author-year references.
+\documentclass[pdflatex,sn-mathphys-ay]{sn-jnl}
+
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+\theoremstyle{thmstyleone}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{thmstylethree}
+\newtheorem{remark}{Remark}
+
+\raggedbottom
+
+\begin{document}
+
+\title[Which way is anomalous?]{Which way is anomalous? Direction identifiability in training-free graph anomaly detection}
+
+\author[1]{\fnm{Wasim} \sur{Khan}}
+\author[2]{\fnm{Shaikh Abdul} \sur{Waheed}}
+\author[3]{\fnm{Sujit R.} \sur{Wakchaure}}
+\author[4]{\fnm{Anjali Devi} \sur{Patil}}
+\author[5]{\fnm{Deepti} \sur{Varshney}}
+\author[6]{\fnm{Vajid} \sur{Khan}}
+\author*[1]{\fnm{Anjali S.} \sur{More}}\email{anjali.dalvi@sitpune.edu.in}
+%% TODO (authors): the corresponding e-mail does not match the listed name; correct before submission.
+
+\affil[1]{\orgname{Symbiosis Institute of Technology Pune, Symbiosis International (Deemed University)}, \city{Pune}, \country{India}}
+\affil[2]{\orgdiv{Department of Computer Science and Engineering}, \orgname{JSPM University}, \city{Pune}, \country{India}}
+\affil[3]{\orgdiv{Department of Computer Engineering}, \orgname{Amrutvahini College of Engineering}, \city{Sangamner}, \country{India}}
+\affil[4]{\orgdiv{Department of AIDS}, \orgname{Smt Indira Gandhi College of Engineering}, \city{Navi Mumbai}, \country{India}}
+\affil[5]{\orgdiv{Department of Computer Engineering}, \orgname{Ajeenkya D Y Patil School of Engineering}, \city{Pune}, \country{India}}
+\affil[6]{\orgdiv{Department of Computer Engineering}, \orgname{Genba Sopanrao Moze College of Engineering}, \city{Pune}, \country{India}}
+
+\abstract{Training-free graph anomaly detectors score nodes with hand-designed relational statistics, such as neighbour disagreement or triangle participation, and need no training on the target graph. Each statistic must be oriented: a designer decides whether unusually high or unusually low values are anomalous. We study how much this choice matters and whether it can be made without labels. Using as the instrument a nine-statistic training-free detector, which we introduce and specify in full, we (i) reproduce its original results exactly, (ii) evaluate it unchanged on 21 standard benchmark graphs against rerun and published baselines, (iii) measure the direction in which each statistic separates anomalies on each graph, (iv) test 16 label-free direction rules under a pre-registered development/test split with four untouched graphs, and (v) test few-shot direction selection under the supervision used by ARC and AnomalyGFM. Fixed directions transfer poorly: they are reversed on graphs with injected clique anomalies and on graphs whose anomalies imitate their neighbours, and the detector falls below random on four benchmark datasets. No label-free rule generalises, and a representative skewness rule points the wrong way in 69\% of decisive cases. Labelled normal nodes do not help either, whereas a few labelled anomalies recover the correct direction in 75\% of decisive cases. We give a short non-identifiability argument that explains these results and discuss what they imply for benchmark design and for evaluating training-free detectors.}
+
+\keywords{Graph anomaly detection, Training-free detection, Identifiability, Pre-registration, Reproducibility, Negative results}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Graph anomaly detection (GAD) identifies nodes whose attributes, connections, or both are unusual relative to the rest of a graph \citep{akoglu2015graph,ma2023comprehensive}. Most detectors learn a representation on each target graph, either by reconstruction \citep{ding2019deep}, contrastive learning \citep{liu2021cola}, or affinity maximisation \citep{qiao2023truncated}. A second line of work trains a generalist model on source graphs and transfers it to new graphs without retraining \citep{niu2025unprompt,qiao2025anomalygfm,liu2024arc}. A third line avoids training altogether and scores nodes with relational statistics computed directly on the target graph \citep{zhao2025freegad,wei2026neighbordiv}.
+
+Training-free detectors are attractive because they are cheap, transparent, and need no source data. They also rest on an assumption that is rarely stated: for every statistic, the designer must decide which tail is anomalous. A node whose features disagree with its neighbours is usually suspicious, so neighbour disagreement is scored in its upper tail. A node embedded in few triangles is plausibly suspicious, so triangle participation is scored in its lower tail. These choices are made once, from intuition or from a development set, and then applied to every graph.
+
+This paper asks a simple question: \emph{when do such orientation choices hold, and can they be made without labels?} We began this study with a nine-statistic training-free detector of our own, CoRe-GAD-MSDA, which we specify fully in Section~\ref{sec:detector}. Its fixed directions had been tuned on four synthetic perturbation mechanisms, and it performed well on the graphs used during its development. Evaluating it on the standard benchmark files used by recent generalist detectors exposed large failures, and the failures had a common cause: the orientation of the statistics. We therefore turned the detector into an instrument and designed a sequence of experiments around the orientation question, pre-registering the analyses whose outcome could otherwise have been tuned.
+
+Our findings are as follows.
+\begin{enumerate}
+\item The original results reproduce exactly (164 of 164 released metric values), so the failures below are not implementation artefacts (Section~\ref{sec:rq1}).
+\item Unchanged, the detector is the best training-free method on the injected-anomaly suite but trails trained generalists on the organic-anomaly suite and falls below random on four graphs (Section~\ref{sec:rq2}).
+\item The anomalous direction of a statistic depends on how anomalies arise. On graphs with injected clique anomalies, anomalous nodes have \emph{high} closure and triangle load; on Weibo, Tolokers, and YelpChi, anomalous nodes are \emph{more} similar to their neighbours than normal nodes are. Removing the two reversed triangle statistics lifts AUROC above 0.9 on four injected graphs (Section~\ref{sec:rq3}).
+\item None of 16 pre-registered label-free direction rules generalises. The rule selected on development graphs improves the four untouched graphs but degrades the remaining test graphs, and skewness-based rules are systematically wrong (Section~\ref{sec:rq4}).
+\item Labelled normal nodes, the supervision used by ARC and AnomalyGFM, do not identify directions. A handful of labelled anomalies does (Section~\ref{sec:rq5}).
+\end{enumerate}
+A short argument (Proposition~\ref{prop:nonid}) shows why: the marginal distribution of a statistic on an unlabelled graph is consistent with anomalies in either tail, so any label-free rule must import an assumption that some benchmarks violate.
+
+The contribution is empirical and methodological. We do not propose a new state-of-the-art detector. We document, with protocols fixed before the corresponding results were seen, a failure mode of training-free GAD, its cause, and the minimum supervision that removes it. We also report two practical issues that affect comparisons in this area: benchmark datasets that exist in several incompatible versions, and a baseline number in our own earlier draft that was wrong by more than 0.6 AUROC.
+
+\section{Related work}\label{sec:related}
+
+\paragraph{Graph anomaly detection.} Early detectors used explicit ego-network statistics and residual models \citep{10.1007/978-3-642-13672-6_40,ijcai2017p299}. Deep unsupervised detectors reconstruct attributes and structure \citep{ding2019deep}, contrast nodes with their neighbourhoods \citep{liu2021cola,jin2021anemone,zheng2023slgad}, or maximise local affinity \citep{qiao2023truncated,zhang2025gctam}. Surveys organise these families and their assumptions \citep{ma2023comprehensive,11048498}.
+
+\paragraph{Generalist and training-free detectors.} UNPrompt trains neighbourhood prompts on a source graph and applies them zero-shot \citep{niu2025unprompt}. AnomalyGFM learns graph-agnostic normal and abnormal prototypes and supports zero- and few-shot inference \citep{qiao2025anomalygfm}. ARC uses in-context learning with a few labelled normal nodes at test time \citep{liu2024arc}. ReFi-GAD transfers relational fingerprints \citep{liu2026refigad}. FreeGAD and NeighborDiv remove training entirely and score nodes with affinity-gated residuals or neighbour diversity \citep{zhao2025freegad,wei2026neighbordiv}. Our instrument belongs to this last family. The orientation problem we study applies to any detector that converts statistics into scores with a fixed sign, including the deviation scores of FreeGAD and NeighborDiv.
+
+\paragraph{Evaluation studies.} Careful evaluation studies have repeatedly changed conclusions in outlier detection. \citet{campos2016evaluation} showed that rankings of unsupervised outlier detectors depend strongly on datasets and measures. BOND benchmarked unsupervised node outlier detection and separated injected from organic anomalies \citep{3600270.3602229}; GADBench did the same for supervised GAD \citep{tang2023gadbench}. In machine learning more broadly, negative results are under-reported \citep{karl2024negative}, and pre-registration has been proposed as a guard against analyses that are tuned after seeing results \citep{nosek2018preregistration}. Our study follows this tradition: it fixes protocols before evaluation and reports the outcome whichever way it falls.
+
+\section{CoRe-GAD-MSDA: the detector used as an instrument}\label{sec:detector}
+
+The detector studied here, CoRe-GAD-MSDA, was developed by the authors and has not been published elsewhere. %% TODO (authors): give the expansion of "CoRe" in the next sentence.
+MSDA stands for multi-statistic direction-aware evidence. Because no prior description exists, this section specifies it completely; Algorithm~\ref{alg:detector} (Appendix~\ref{app:algorithm}) summarises the procedure, and Fig.~\ref{fig:detector} gives an overview. We use it as an instrument because it makes the orientation decision explicit and lets us change that decision while holding everything else fixed.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{fig/Fig1_detector.png}
+\caption{Overview of CoRe-GAD-MSDA. Nine statistics are computed per node, calibrated as signed empirical ranks against a reference set that excludes the query and its neighbours, oriented by a tail direction, and fused by label-free reliability weights and a contextual/structural branch maximum. This study varies only the orientation step.}
+\label{fig:detector}
+\end{figure}
+
+\subsection{Problem setting and preprocessing}
+Let $\mathcal{G}=(\mathcal{V},\mathcal{E},\mathbf{X})$ be an undirected attributed graph with $n$ nodes, binary adjacency matrix $\mathbf{A}$ without self-loops, degree matrix $\mathbf{D}$, and features $\mathbf{X}\in\mathbb{R}^{n\times d}$. The neighbours and degree of node $v_i$ are $\mathcal{N}_i$ and $d_i=|\mathcal{N}_i|$. The goal is a score $s_i\in[0,1]$ for every node, larger for more anomalous nodes, computed without labels or trainable parameters. Non-finite feature entries are replaced by the median of their column, constant columns are removed, each remaining column is standardised to zero mean and unit variance, and each row is scaled to unit Euclidean norm (zero rows are kept). We write $\tilde{\mathbf{x}}_i$ for the resulting feature vector and $\delta_{uv}=1-\tilde{\mathbf{x}}_u^{\top}\tilde{\mathbf{x}}_v$ for the cosine dissimilarity of two nodes.
+
+\subsection{Evidence statistics}
+For each node the detector computes nine statistics $t_{i1},\dots,t_{i9}$ (Table~\ref{tab:stats}). A statistic that is undefined for a node is marked missing and excluded from calibration and fusion for that node. To bound cost on high-degree nodes, $\widehat{\mathcal{N}}_i$ is $\mathcal{N}_i$ if $d_i\le q$ and otherwise a uniform sample of $q=32$ neighbours, and $\widehat{\mathcal{P}}_i$ is the set of all unordered neighbour pairs if there are at most $L=128$ of them and otherwise a uniform sample of $L$ pairs. Samples are drawn without replacement from a generator seeded by the run seed and a fixed graph identifier.
+
+\paragraph{Contextual statistics.}
+\begin{align}
+t_{i1}&=\frac{1}{|\widehat{\mathcal{N}}_i|}\sum_{j\in\widehat{\mathcal{N}}_i}\delta_{ij}, &
+t_{i2}&=\frac{1}{|\widehat{\mathcal{P}}_i|}\sum_{(u,v)\in\widehat{\mathcal{P}}_i}\delta_{uv}, \\
+t_{i3}&=\frac{1}{|\widehat{\mathcal{P}}_i|}\sum_{(u,v)\in\widehat{\mathcal{P}}_i}\big(\delta_{uv}-t_{i2}\big)^2, &
+t_{i4}&=\frac{1}{|\widehat{\mathcal{P}}_i|}\sum_{(u,v)\in\widehat{\mathcal{P}}_i}A_{uv}, \\
+t_{i5}&=\frac{1}{d_i}\sum_{j\in\mathcal{N}_i}\log(1+d_j), &
+t_{i6}&=1-\cos\big(\tilde{\mathbf{x}}_i,\mathbf{h}_i\big),\quad \mathbf{H}=(\mathbf{D}+\mathbf{I})^{-1}(\mathbf{A}+\mathbf{I})\tilde{\mathbf{X}}.
+\end{align}
+Node--neighbour discrepancy $t_1$, neighbour-degree scale $t_5$, and the one-hop propagation residual $t_6$ are defined for every non-isolated node ($t_6$ for every node); the pair statistics $t_2$--$t_4$ require $d_i\ge2$. The cosine in $t_6$ is taken as 0 when either vector is zero.
+
+\paragraph{Structural statistics.} Let $\mathcal{T}_i=\{(u,v):u,v\in\mathcal{N}_i,\,u<v,\,A_{uv}=1\}$ be the neighbour pairs that close a triangle with $v_i$, and let $\mathcal{U}_i$ be the $\lceil\sqrt{d_i}\,\rceil$ neighbours with the largest dissimilarity $\delta_{ij}$. Then
+\begin{align}
+t_{i7}&=\frac{|\mathcal{T}_i|}{d_i}\ (\text{0 if } d_i<2), &
+t_{i8}&=\frac{1}{|\mathcal{U}_i|}\sum_{j\in\mathcal{U}_i}\delta_{ij}, &
+t_{i9}&=\frac{1}{|\mathcal{T}_i|}\sum_{(u,v)\in\mathcal{T}_i}\frac{\delta_{iu}+\delta_{iv}+\delta_{uv}}{3}.
+\end{align}
+Triangle load $t_7$ is defined for every node, the unexpected-edge tail $t_8$ for non-isolated nodes, and motif incoherence $t_9$ only for nodes in at least one triangle. Dissimilarities in $t_6$, $t_8$, and $t_9$ are clipped to $[0,2]$ to remove rounding error.
+
+\begin{table}[!ht]
+\caption{Statistics of CoRe-GAD-MSDA and their fixed orientations (U: upper tail anomalous; L: lower tail; 2: two-sided).}
+\label{tab:stats}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Branch & Statistic & Symbol & Fixed direction \\
+\midrule
+Contextual & Node--neighbour discrepancy & $t_1$ & U \\
+ & Mean neighbour-pair discrepancy & $t_2$ & U \\
+ & Variance of neighbour-pair discrepancy & $t_3$ & U \\
+ & Local closure & $t_4$ & L \\
+ & Mean log-neighbourhood degree & $t_5$ & 2 \\
+ & One-hop propagation residual & $t_6$ & U \\
+\midrule
+Structural & Triangle load & $t_7$ & L \\
+ & Unexpected-edge tail & $t_8$ & U \\
+ & Motif incoherence & $t_9$ & U \\
+\botrule
+\end{tabular}
+\end{table}
+
+\subsection{Neighbourhood-excluded rank calibration}
+Raw statistics have graph-dependent scales, so each is converted into an empirical rank. Let $\mathcal{V}_k$ be the nodes for which $t_{\cdot k}$ is defined, $\mathcal{B}_i=\{i\}\cup\mathcal{N}_i$ the closed neighbourhood of $v_i$, and $\mathcal{R}_{ik}=\mathcal{V}_k\setminus\mathcal{B}_i$ its reference set, of size $m_{ik}$. The signed midrank of $t_{ik}$ is
+\begin{equation}\label{eq:rank}
+r_{ik}=\frac{2}{m_{ik}}\Big(\sum_{j\in\mathcal{R}_{ik}}\mathbb{I}(t_{jk}<t_{ik})+\tfrac12\sum_{j\in\mathcal{R}_{ik}}\mathbb{I}(t_{jk}=t_{ik})\Big)-1\ \in[-1,1],
+\end{equation}
+and the coordinate is valid, $M_{ik}=1$, if $t_{ik}$ is defined and $m_{ik}>0$; otherwise $M_{ik}=0$. Excluding the query and its neighbours prevents a node's own neighbourhood from entering its reference set. In the original evaluation this exclusion changed AUROC by less than 0.001 on five of six graphs and by 0.009 on Facebook; we keep it because it is part of the detector as specified. The ranks are computed exactly: each statistic is sorted once, and the contribution of $\mathcal{B}_i$ is subtracted from global counts. We also compute the graph-wide signed midrank $\bar r_{ik}$, defined as in Eq.~\eqref{eq:rank} with $\mathcal{R}_{ik}$ replaced by $\mathcal{V}_k$ (including the query).
+
+\subsection{Orientation}
+Each rank is converted into evidence $e_{ik}\in[0,1]$ according to the tail direction $\tau_k$ of statistic $k$:
+\begin{equation}\label{eq:orient}
+e_{ik}=M_{ik}\cdot\begin{cases}(1+r_{ik})/2 & \tau_k=\text{upper},\\ (1-r_{ik})/2 & \tau_k=\text{lower},\\ |r_{ik}| & \tau_k=\text{two-sided}.\end{cases}
+\end{equation}
+The fixed directions are given in Table~\ref{tab:stats}. In Sections~\ref{sec:rq4} and~\ref{sec:rq5}, only $\tau_k$ is changed.
+
+\subsection{Reliability weighting and fusion}
+Each valid coordinate receives a label-free weight $w_{ik}=a_{ik}\,b_k\,c_{ik}\in[0,1]$ with three factors:
+\begin{align}
+a_{ik}&=M_{ik}\min\!\Big(1,\frac{m_{ik}}{\max(n_k^{*}-1,1)}\Big),\quad n_k^{*}=\sum_i M_{ik}, \label{eq:support}\\
+b_k&=\min\!\Big(1,\frac{\mathrm{IQR}\{e_{ik}:M_{ik}=1\}}{0.5}\Big), \label{eq:dispersion}\\
+c_{ik}&=M_{ik}\max\!\Big(0,1-\frac{|r_{ik}-\bar r_{ik}|}{2}\Big). \label{eq:stability}
+\end{align}
+The support factor $a_{ik}$ shrinks when few reference nodes remain, the dispersion factor $b_k$ shrinks for statistics whose evidence is nearly constant (0.5 is the interquartile range of a uniform variable on $[0,1]$), and the stability factor $c_{ik}$ shrinks when excluding the neighbourhood changes the rank substantially. Because $b_k$ is computed from oriented evidence, it depends on $\tau_k$. With $\mathcal{K}_{\mathrm{ctx}}=\{1,\dots,6\}$ and $\mathcal{K}_{\mathrm{str}}=\{7,8,9\}$, the branch scores and the final score are
+\begin{equation}\label{eq:fusion}
+C_i=\frac{\sum_{k\in\mathcal{K}_{\mathrm{ctx}}}w_{ik}e_{ik}}{\sum_{k\in\mathcal{K}_{\mathrm{ctx}}}w_{ik}},\qquad
+S_i=\frac{\sum_{k\in\mathcal{K}_{\mathrm{str}}}w_{ik}e_{ik}}{\sum_{k\in\mathcal{K}_{\mathrm{str}}}w_{ik}},\qquad
+s_i=\max(C_i,S_i),
+\end{equation}
+where a branch with zero total weight scores 0. The maximum lets strong evidence from either branch determine the score instead of being averaged away. The detector has no trainable parameters; its fixed settings are $q=32$, $L=128$, and the directions in Table~\ref{tab:stats}.
+
+\paragraph{Origin of the fixed directions.} The directions in Table~\ref{tab:stats} were chosen from the semantics of the statistics and confirmed on development runs of four synthetic perturbations of Cora and CiteSeer: cross-community edge addition, degree-preserving rewiring, ego-edge deletion, and hub-star injection. In the original evaluation on those mechanisms, PubMed, Reddit, Amazon, and Facebook, replacing them by two-sided orientation lowered citation macro AUROC from 0.785 to 0.674. The orientation step was therefore the most influential design choice before this study began, which is why we study it here.
+
+\section{Study design}\label{sec:design}
+
+\subsection{Research questions}
+\begin{description}
+\item[RQ1] Do the original results reproduce, and are the implementations used here exact?
+\item[RQ2] How does the unchanged detector compare with training-free, generalist, and per-graph detectors on standard benchmark files?
+\item[RQ3] On each graph, in which direction does each statistic separate anomalies?
+\item[RQ4] Can the direction be chosen per graph from unlabelled data?
+\item[RQ5] How much supervision is needed to choose it, and how does the result compare with few-shot generalists?
+\end{description}
+
+\subsection{Datasets}
+Table~\ref{tab:datasets} lists the 21 benchmark graphs. The injected suite (Cora, CiteSeer, PubMed, ACM, BlogCatalog, Flickr, Facebook) contains the conventional structural (clique) and contextual anomalies \citep{ding2019deep,liu2021cola,xu2022contrastive}. The organic suite follows the zero-shot protocol of UNPrompt and AnomalyGFM \citep{niu2025unprompt,qiao2025anomalygfm}: Reddit \citep{kumar2019predicting}, Amazon and Amazon-all \citep{mcauley2013amateurs,dou2020enhancing}, Disney, Books, and Enron \citep{sanchez2013statistical}, Weibo \citep{zhao2020error}, Tolokers and Questions \citep{platonov2023critical}, and YelpChi and YelpChi-all \citep{rayana2015collective,dou2020enhancing}. Coauthor-CS and Amazon-Photo \citep{shchur2018pitfalls} with injected anomalies, and Books and Enron, were held out completely (Section~\ref{sec:prereg}). All files come from public repositories. We used the files as distributed and found that two benchmarks exist in incompatible versions: the Reddit file distributed with TAM, ARC, and UNPrompt has the same graph and labels as the PyGOD/BOND file but differently scaled features, and the Weibo files distributed with ARC and with UNPrompt differ in attributes. Results depend on the version (Reddit AUROC 0.526 versus 0.572 for the same detector), so we report the file used for every number.
+
+\begin{table}[!ht]
+\caption{Benchmark graphs. Split refers to the pre-registered direction-rule study (Section~\ref{sec:prereg}); Dev graphs were used to select the rule, T1 graphs had been evaluated earlier but were not used for selection, and T2 graphs were never evaluated before the rule was frozen.}
+\label{tab:datasets}
+\footnotesize
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrlll@{}}
+\toprule
+Graph & Nodes & Edges & Feat. & Anomalies (rate) & Type & Source & Split \\
+\midrule
+\input{gen/tab_datasets.tex}
+\botrule
+\end{tabular*}
+\end{table}
+
+\subsection{Methods compared}
+NeighborDiv and FreeGAD were run with equation-faithful implementations; FreeGAD uses the official Cora preset unchanged \citep{wei2026neighbordiv,zhao2025freegad}. UNPrompt and AnomalyGFM were rerun with their official code, trained on Facebook as in their papers, with five seeds \citep{niu2025unprompt,qiao2025anomalygfm}. The AnomalyGFM script prints several test scores every 50 epochs without a selection rule; we fixed in advance the abnormal-prototype score at the final epoch. Its zero-shot code builds a dense adjacency matrix, which prevented runs on YelpChi-all, Questions, and YelpChi. Published values are reported for ARC, AnomalyGFM, UNPrompt, and the per-graph detectors DOMINANT, CoLA, and TAM, all on the same files \citep{liu2024arc,qiao2025anomalygfm,niu2025unprompt,qiao2023truncated}. Metrics are AUROC and average precision (AP) \citep{saito2015precision}, averaged over five seeds (11, 23, 37, 53, 71) for stochastic methods.
+
+\subsection{Pre-registration and splits}\label{sec:prereg}
+Two analyses could have been tuned after seeing results: the choice of a label-free direction rule (RQ4) and the few-shot comparison (RQ5). For each, we wrote a protocol that fixed the data split, the complete list of candidate rules, the selection criterion, the seeds, and the metrics, and recorded its SHA-256 hash before running any candidate (Appendix~\ref{app:prereg}). For RQ4 the selection criterion was the mean prevalence-adjusted utility
+\begin{equation}
+U=\tfrac12\Big[\frac{\mathrm{AUROC}-0.5}{0.5}+\frac{\mathrm{AP}-\pi}{1-\pi}\Big]
+\end{equation}
+over eight development units (six graphs and the synthetic development runs on Cora and CiteSeer); the selected rule was frozen, with hashes of the rule code, before test labels were read. The labels of the four T2 graphs were stored separately and read only after the freeze. We disclose one limitation of this design: the motivation for RQ4 came from the per-statistic diagnostic of RQ3, which used labels on the Dev and T1 graphs. T1 is therefore ``seen but not used for selection'', and T2 is the clean held-out evidence.
+
+\subsection{Exact vectorised statistics}
+On the densest graphs (Amazon-all has $\sum_i d_i^2\approx1.6\times10^{10}$) the original per-node loops for triangle load, motif incoherence, and NeighborDiv's pairwise variance are infeasible. We replaced them with closed forms. With $\mathbf{S}$ the edge-similarity matrix and $\mathbf{C}=(\mathbf{A}\mathbf{A})\circ\mathbf{A}$ the common-neighbour counts on edges, the triangle count of node $i$ is $\tfrac12\sum_u C_{iu}$, and the sums needed for motif incoherence are $\sum_{\text{tri}}(s_{iu}+s_{iv})=\sum_u C_{iu}S_{iu}$ and $\sum_{\text{tri}}s_{uv}=\tfrac12\sum_u A_{iu}(\mathbf{A}\mathbf{S})_{iu}$, computed in row blocks. NeighborDiv's variance over neighbour pairs follows from the first two moments of the neighbour embeddings. Both replacements agree with the original loops to within $6\times10^{-7}$, and the detector's per-seed AUROC on Facebook is identical.
+
+\section{RQ1: Reproduction}\label{sec:rq1}
+Rerunning the released frozen evaluation reproduced all 164 released AUROC and AP values exactly (maximum absolute difference 0): the held-out Cora and CiteSeer seeds, the PubMed transfer runs, and Reddit, for the selected and the two-sided configurations. The Amazon (8,639-node U-P-U) and Facebook per-seed results also matched exactly. UNPrompt and AnomalyGFM reruns are close to their published values; on Amazon, for example, our runs give 0.770 and 0.811 against 0.753 and 0.842 published. During this check we found that an earlier draft of our own work reported 0.200 AUROC for AnomalyGFM on Amazon, obtained with an independent reimplementation on a different Amazon file. The official code on the standard file gives 0.811. We report this because such discrepancies can reverse a comparison.
+
+\section{RQ2: The unchanged detector on standard benchmarks}\label{sec:rq2}
+
+Tables~\ref{tab:zs} and~\ref{tab:inj} report the results. On the organic suite (Table~\ref{tab:zs}) the detector has the best AUROC among the executed methods on Reddit and Questions, but its mean AUROC over the nine graphs (0.552) is below that of UNPrompt (0.637), and it falls below 0.5 on Weibo, Tolokers, and YelpChi. On the injected suite (Table~\ref{tab:inj}) it has the highest mean AUROC among training-free methods (0.779 against 0.720 for FreeGAD and 0.606 for NeighborDiv), but FreeGAD has the higher AP on six of seven graphs, and detectors trained on each target graph remain stronger on ACM and BlogCatalog.
+
+\begin{sidewaystable}
+\caption{Organic-anomaly suite. Executed methods use identical files; $^{\dagger}$ official code rerun, trained on Facebook; pub.: published value. Bold: best executed method. Avg.\ over all nine graphs.}
+\label{tab:zs}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccccccc@{}}
+\toprule
+Method & \input{gen/hdr_zs.tex} & Avg. \\
+\midrule
+\multicolumn{11}{@{}l}{\textit{(a) AUROC}}\\
+\input{gen/tab_zs_auroc.tex}
+\midrule
+\multicolumn{11}{@{}l}{\textit{(b) AP}}\\
+\input{gen/tab_zs_ap.tex}
+\botrule
+\end{tabular*}
+\end{sidewaystable}
+
+\begin{table}[!ht]
+\caption{Injected-anomaly suite. Rows marked $^{*}$ are fixed variants evaluated after the main result and never used for selection; published per-graph values are from \citet{qiao2023truncated} on the same files.}
+\label{tab:inj}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccccc@{}}
+\toprule
+Method & \input{gen/hdr_inj.tex} & Avg. \\
+\midrule
+\multicolumn{9}{@{}l}{\textit{(a) AUROC}}\\
+\input{gen/tab_inj_auroc.tex}
+\midrule
+\multicolumn{9}{@{}l}{\textit{(b) AP}}\\
+\input{gen/tab_inj_ap.tex}
+\botrule
+\end{tabular*}
+\end{table}
+
+The post hoc rows in Table~\ref{tab:inj} point to the cause. Removing the two triangle statistics raises AUROC to 0.929, 0.947, 0.933, and 0.899 on Cora, CiteSeer, PubMed, and ACM, but lowers it on Facebook from 0.878 to 0.597. Two-sided orientation raises Weibo from 0.447 to 0.824 (Table~\ref{tab:zs} uses the fixed directions). No single fixed configuration works on all graphs.
+
+\section{RQ3: Which direction is anomalous?}\label{sec:rq3}
+
+Fig.~\ref{fig:diag} shows, for every graph and statistic, the AUROC of the oriented coordinate alone. A value below 0.5 means that the fixed direction is reversed on that graph.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{fig/Fig2_direction_diagnostic.pdf}
+\caption{AUROC of each oriented statistic on its own, averaged over five seeds. Blue: the fixed direction separates anomalies; red: the direction is reversed. Bold values are below 0.45. Motif incoherence is undefined on Reddit, which has no triangles.}
+\label{fig:diag}
+\end{figure}
+
+Three patterns stand out. First, on every graph with injected clique anomalies, triangle load ($t_7$) is reversed, and closure ($t_4$) is reversed on most of them: planted cliques give anomalous nodes unusually \emph{many} triangles. Facebook, whose anomalies were injected differently, is the exception for $t_7$, where the fixed lower tail is correct (0.88). Second, on Weibo, Tolokers, and YelpChi the discrepancy statistics and the propagation residual are reversed: anomalous accounts are more similar to their neighbours than normal ones are, a pattern consistent with camouflage or coordinated behaviour. Third, the direction is stable within each mechanism. The four synthetic mechanisms on which the fixed directions were chosen resemble neither clique injection nor camouflage, so the directions were correct for the development data and wrong for much of the benchmark.
+
+Reddit illustrates a different limit. Its user--subreddit graph is bipartite and has no triangles, so $t_7$ and $t_9$ carry no information and every statistic stays close to 0.5 in either orientation.
+
+\section{RQ4: Can the direction be chosen without labels?}\label{sec:rq4}
+
+\subsection{Candidate rules}
+The pre-registered candidate set contained 16 rules. Two were references: the fixed directions (F0) and all two-sided (F1). Twelve were based on the skewness $s_k$ of each statistic's unlabelled values on the target graph, measured either as the moment skewness or as Kelly's quantile skewness $(q_{90}+q_{10}-2q_{50})/(q_{90}-q_{10})$. Family A sets $\tau_k$ to upper if $s_k>\tau$, lower if $s_k<-\tau$, and two-sided otherwise; family B keeps the fixed direction unless $|s_k|>\tau$ and its sign disagrees. Each was tried at three thresholds per skewness measure. The rationale is that rare anomalies should lengthen the tail in which they lie. The remaining two rules were consensus rules: each statistic takes, in turn, the orientation whose evidence correlates best (Spearman) with the mean evidence of the other statistics, iterating to a fixed point from either the fixed directions (C) or the skewness rule A(Kelly, 0.1) (D).
+
+\subsection{Results}
+Table~\ref{tab:rules} and Fig.~\ref{fig:rules} report the outcome. The consensus rule C had the highest development utility (0.338 against 0.249 for the fixed directions) and was frozen. On the four untouched T2 graphs it raised mean AUROC from 0.572 to 0.649 and mean AP from 0.066 to 0.209. On T1, however, it lowered mean AUROC from 0.672 to 0.616: it collapsed on Facebook (0.878 to 0.468), Flickr (0.702 to 0.485), and YelpChi (0.440 to 0.297) while improving CiteSeer and the T2 graphs. All twelve skewness rules were below random on average in every split (mean AUROC 0.33--0.49).
+
+\begin{table}[!ht]
+\caption{Pre-registered label-free direction rules, ordered by development utility $U$. Each split reports mean $U$, AUROC, and AP over its units. Rule C was selected on Dev and frozen before T1 and T2 were evaluated.}
+\label{tab:rules}
+\scriptsize
+\setlength{\tabcolsep}{1.8pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccccccc@{}}
+\toprule
+ & \multicolumn{3}{c}{Dev} & \multicolumn{3}{c}{T1 (seen)} & \multicolumn{3}{c}{T2 (untouched)} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(l){8-10}
+Rule & $U$ & AUROC & AP & $U$ & AUROC & AP & $U$ & AUROC & AP \\
+\midrule
+\input{gen/tab_rules.tex}
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{fig/Fig3_rule_study.pdf}
+\caption{(a) Mean AUROC of the reference rules, the selected consensus rule, and the best skewness rule on each split. (b) Per-unit change in AUROC when the frozen consensus rule replaces the fixed directions.}
+\label{fig:rules}
+\end{figure}
+
+The consensus rule fails for a structural reason. It aligns each statistic with the majority of the others. That is correct when anomalies are extreme on most statistics in the default directions, as with planted cliques, and harmful when the one informative statistic disagrees with the majority, as triangle load does on Facebook. On Weibo the discrepancy statistics are reversed together, so they form a coherent majority and the rule keeps them reversed.
+
+\subsection{Why label-free selection fails}
+The negative result has a simple explanation.
+
+\begin{proposition}[Non-identifiability of the anomalous tail]\label{prop:nonid}
+Let $P$ be the distribution of a statistic over the nodes of a graph, with a continuous distribution function $F$, and let $\pi\in(0,\tfrac12)$ be the anomaly rate. There exist two decompositions $P=(1-\pi)P_0+\pi P_1=(1-\pi)Q_0+\pi Q_1$ in which the anomaly distribution $P_1$ is supported on the upper tail $[F^{-1}(1-\pi),\infty)$ and $Q_1$ on the lower tail $(-\infty,F^{-1}(\pi)]$.
+\end{proposition}
+\begin{proof}
+Let $P_1$ be $P$ restricted to $[F^{-1}(1-\pi),\infty)$ and renormalised, which has mass $\pi$ under $P$, and let $P_0$ be $P$ restricted to the complement and renormalised. Then $(1-\pi)P_0+\pi P_1=P$. The lower-tail construction is symmetric.
+\end{proof}
+
+The unlabelled data therefore cannot decide which tail is anomalous; a rule decides it only through an assumption about the normal distribution $P_0$, such as symmetry (skewness rules) or agreement with other statistics (consensus rules). Fig.~\ref{fig:diag} shows that benchmarks violate each such assumption somewhere. The skewness rules fail in a consistent way: in pooled decisive cases (Section~\ref{sec:rq5}) the rule A(Kelly, 0.1) chose the anomalous direction only 31\% of the time, so the anomalous tail was usually the \emph{shorter} one. We did not pre-register the reversed rule, and we report this only as a hypothesis for future work.
+
+\section{RQ5: How much supervision is needed?}\label{sec:rq5}
+
+\subsection{Protocol}
+ARC and AnomalyGFM use $k$ labelled \emph{normal} nodes at test time \citep{liu2024arc,qiao2025anomalygfm}. Before running, we fixed one direction rule that uses only such shots: for each statistic, compare the fraction of unlabelled nodes above the largest shot rank with the fraction below the smallest, and choose the tail with the larger excess. This is the natural way to use an anomaly-free reference. Shots were drawn uniformly from normal nodes with fixed seeds; metrics are computed on all non-shot nodes. As a separately reported variant with more supervision, we also chose each direction by maximising AUROC on $k$ labelled anomalies and $k$ labelled normal nodes.
+
+\subsection{Results}
+Tables~\ref{tab:fsarc} and~\ref{tab:fsagfm} report the comparisons. With ten normal shots the detector reaches a mean AUROC of 0.586 on ARC's eight test graphs, lower than with the fixed directions (0.704) and well below ARC (0.788). On AnomalyGFM's graphs the normal-shot rule is below AnomalyGFM at every $k$. With ten labelled anomalies and ten normal nodes the detector reaches 0.814 on ARC's graphs, above ARC's published 0.788, and exceeds it on Cora, CiteSeer, ACM, and Facebook (0.927 against 0.676). This comparison is not like-for-like, because ARC sees no labelled anomalies, and AnomalyGFM still outperforms this variant on every organic graph in Table~\ref{tab:fsagfm}.
+
+\begin{table}[!ht]
+\caption{Comparison with ARC on its eight test graphs (AUROC). ARC values are published and use ten labelled normal nodes; ``Normal shots'' uses the same supervision. The last column uses ten labelled anomalies and ten labelled normal nodes and is not directly comparable. Bold: best of the first three columns.}
+\label{tab:fsarc}
+\footnotesize
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccc@{}}
+\toprule
+Graph & Fixed & Normal shots & ARC (pub.) & Anom.+normal \\
+\midrule
+\input{gen/tab_fs_arc.tex}
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[!ht]
+\caption{Comparison with AnomalyGFM (AUROC). AnomalyGFM values are published and use $k$ labelled normal nodes, as does our normal-shot rule. $^{\ddagger}$Uses ten labelled anomalies and ten labelled normal nodes; Disney has too few anomalies. Avg.\ over the seven graphs shown.}
+\label{tab:fsagfm}
+\scriptsize
+\setlength{\tabcolsep}{1.6pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llcccccccc@{}}
+\toprule
+$k$ & Method & Reddit & Amazon & Disney & Amz-all & Yelp-all & Tolok. & Quest. & Avg. \\
+\midrule
+\input{gen/tab_fs_agfm.tex}
+\botrule
+\end{tabular*}
+\end{table}
+
+\subsection{Direction recovery}
+To separate the orientation question from the rest of the detector, we computed, after all protocols had run, how often each information source chooses the direction that separates anomalies. For each graph and seed we call a statistic \emph{decisive} if its AUROC in the upper orientation differs from 0.5 by at least 0.1, and take that orientation as its anomalous direction. This gives 510 decisions on 18 graphs (461 on 16 graphs for $k=10$ anomaly shots). Fig.~\ref{fig:recovery} shows the result. The fixed directions are right in 56\% of decisions and the consensus rule in 62\%. Normal shots do not improve with $k$ (59\%, 60\%, and 54\% for $k=1,5,10$). One labelled anomaly with one normal node already gives 68\%, and ten of each give 75\%.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{fig/Fig4_direction_recovery.pdf}
+\caption{Share of decisive statistics oriented in their anomalous direction, pooled over graphs and seeds (post hoc analysis). Only labelled anomalies move the share well above chance.}
+\label{fig:recovery}
+\end{figure}
+
+\begin{remark}
+Normal shots fail for a statistical reason. The probability mass of the normal distribution above the largest of $k$ normal shots follows a $\mathrm{Beta}(1,k)$ distribution, with mean $1/(k+1)$ and standard deviation of about 0.083 for $k=10$. Anomalies add at most $\pi$ to one tail, and the median anomaly rate of our graphs is 5.1\%. The excess-tail decision is therefore dominated by the sampling noise of the shot extremes. Labelled anomalies, by contrast, give a direct estimate of the AUROC, whose standard error with ten anomalies and ten normal nodes is about 0.1 \citep{hanley1982meaning}; this is enough to orient a statistic whose AUROC differs from 0.5 by more than about 0.1, in line with the 75\% recovery.
+\end{remark}
+
+\section{Discussion}\label{sec:discussion}
+
+\paragraph{What decides performance.} For this family of detectors, the anomalous direction of each statistic matters more than any other design choice we examined. On Weibo, orientation alone moves the same nine statistics from below random (0.447) to 0.824 AUROC, and on four injected graphs removing two reversed statistics lifts AUROC above 0.9. Because the direction is not identified by unlabelled data (Proposition~\ref{prop:nonid}), a fixed-direction detector encodes an assumption about the anomaly mechanism, and its benchmark results measure how well that assumption matches the benchmark.
+
+\paragraph{Implications for benchmarks.} The injected suite is dominated by planted cliques, which reward high closure and triangle counts; detectors developed on other mechanisms will look weak on it, and detectors tuned on it will inherit its direction. Organic suites contain both isolated and camouflaged anomalies. We recommend that papers proposing training-free or statistic-based detectors (i) report each statistic's orientation and its per-graph diagnostic, as in Fig.~\ref{fig:diag}, (ii) separate injected from organic results, and (iii) state which dataset file was used, since two common benchmarks exist in several versions.
+
+\paragraph{Implications for practice.} When a practitioner knows the anomaly mechanism, the directions can be set from that knowledge, and the post hoc rows of Tables~\ref{tab:zs} and~\ref{tab:inj} show that correctly oriented statistics are strong. When the mechanism is unknown, a few labelled anomalies are worth far more than many labelled normal nodes. This also suggests that few-shot protocols built only on normal shots, which are standard for generalist detectors, may understate what a small amount of anomaly supervision can achieve.
+
+\paragraph{Limitations.} We studied one training-free detector, although its statistics are common to the family. The diagnostic of RQ3 used labels on the Dev and T1 graphs, so T2, with four graphs, is the only fully clean test of RQ4. Baseline comparisons for ARC and for AnomalyGFM's few-shot setting use published values; T-Finance and Elliptic were not obtainable in our environment, and AnomalyGFM could not be rerun on three large graphs. The direction-recovery analysis and the reversed-skewness observation are post hoc. Finally, in the RQ4 protocol file the held-out graph \texttt{cs.mat} was mislabelled as Amazon-Computers; it is Coauthor-CS (Appendix~\ref{app:prereg}).
+
+\section{Conclusion}\label{sec:conclusion}
+Training-free relational statistics detect graph anomalies well when they are oriented in the direction the anomalies actually take, and poorly otherwise. That direction depends on the anomaly mechanism, is not identified by unlabelled data, and is not recovered from labelled normal nodes, but a few labelled anomalies recover it. These results, obtained under pre-registered protocols, suggest that orientation should be treated as an explicit, reported assumption of statistic-based detectors, and that few-shot evaluation should include labelled anomalies as well as normal nodes.
+
+\backmatter
+
+\bmhead{Acknowledgements}
+Not applicable.
+
+\section*{Declarations}
+
+\begin{itemize}
+\item \textbf{Funding:} This research did not receive external funding.
+\item \textbf{Competing interests:} The authors declare no competing interests.
+\item \textbf{Ethics approval and consent to participate:} Not applicable.
+\item \textbf{Data availability:} All datasets are public. Benchmark files were obtained from the repositories of ARC (\url{https://github.com/yixinliu233/ARC}), UNPrompt (\url{https://github.com/mala-lab/UNPrompt}), TAM (\url{https://github.com/mala-lab/TAM-master}), CARE-GNN (\url{https://github.com/YingtongDou/CARE-GNN}), PyGOD (\url{https://github.com/pygod-team/data}), and the Planetoid repository; checksums are listed in the code release.
+\item \textbf{Code availability:} Code, pre-registered protocols with their hashes, freeze records, per-node scores, and all result files are available at \url{https://github.com/REPLACE-WITH-REPOSITORY}. %% TODO (authors): create the public repository (ideally with a Zenodo DOI).
+\item \textbf{Use of large language models:} %% TODO (authors): review and edit this statement so that it accurately describes your use.
+An AI assistant (Claude, Anthropic) was used to help implement the vectorised statistics and experiment scripts, run the reproduction and benchmark experiments, and draft and edit the manuscript. The authors designed the study, approved the pre-registered protocols, checked the results against the released code and result files, and take responsibility for the content.
+\item \textbf{Author contributions:} %% TODO (authors): update to reflect the revised study (CRediT taxonomy recommended).
+W.K.: implementation, experiments, analysis, writing. S.A.W.: conceptualisation, supervision, writing. S.R.W.: methodology, analysis, editing. A.D.P.: analysis, editing. D.V.: literature review, data organisation, figures. V.K.: data organisation, figures. A.S.M.: literature review, editing.
+\end{itemize}
+
+\begin{appendices}
+
+\section{Algorithm and complexity of CoRe-GAD-MSDA}\label{app:algorithm}
+
+\begin{algorithm}[!ht]
+\caption{CoRe-GAD-MSDA scoring for one graph}\label{alg:detector}
+\begin{algorithmic}[1]
+\Require graph $(\mathbf{A},\mathbf{X})$; directions $\tau_1,\dots,\tau_9$; limits $q=32$, $L=128$; seed
+\Ensure scores $s_i\in[0,1]$ for all nodes
+\State Impute, drop constant columns, standardise, and row-normalise $\mathbf{X}$ to obtain $\tilde{\mathbf{X}}$
+\State $\mathbf{H}\gets(\mathbf{D}+\mathbf{I})^{-1}(\mathbf{A}+\mathbf{I})\tilde{\mathbf{X}}$
+\For{each node $i$}
+  \State compute $t_{i1},\dots,t_{i9}$ with sampled $\widehat{\mathcal{N}}_i$, $\widehat{\mathcal{P}}_i$; mark undefined values missing
+\EndFor
+\For{each statistic $k$}
+  \State sort the defined values once
+  \For{each node $i$ with $t_{ik}$ defined}
+    \State $m_{ik}\gets|\mathcal{V}_k\setminus\mathcal{B}_i|$; if $m_{ik}=0$ set $M_{ik}\gets0$ and continue
+    \State $r_{ik}\gets$ Eq.~\eqref{eq:rank} by subtracting the counts of $\mathcal{B}_i$ from the global counts; $M_{ik}\gets1$
+    \State $\bar r_{ik}\gets$ graph-wide signed midrank; $e_{ik}\gets$ Eq.~\eqref{eq:orient} with $\tau_k$
+  \EndFor
+  \State $b_k\gets$ Eq.~\eqref{eq:dispersion}
+\EndFor
+\For{each node $i$}
+  \State $w_{ik}\gets a_{ik}b_kc_{ik}$ by Eqs.~\eqref{eq:support}--\eqref{eq:stability}
+  \State $C_i,S_i\gets$ weighted branch means (0 for an empty branch); $s_i\gets\max(C_i,S_i)$
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Complexity.} With $n$ nodes, $|\mathcal{E}|$ edges, $d$ retained features, and $K=9$ statistics, propagation costs $O(|\mathcal{E}|d)$, the sampled contextual statistics $O(n(q+L)d)$, and the structural statistics $O(|\mathcal{E}|d)$ for edge similarities plus the triangle computation. With the block-wise identities of Section~\ref{sec:design}, triangle counts and motif sums cost $O\big(\sum_i\sum_{u\in\mathcal{N}_i}d_u\big)=O\big(\sum_u d_u^2\big)$ sparse operations and bounded memory. Calibration sorts each statistic once and subtracts the closed neighbourhood for every query, $O(Kn\log n+K|\mathcal{E}|)$; weighting and fusion are $O(Kn)$. Memory is $O(nd+|\mathcal{E}|+Kn)$. On a single CPU core, scoring one seed took between about 1 s (Cora) and 80 s (Flickr, 12,047 features) on graphs with up to $2\times10^4$ nodes, mainly depending on the feature dimension, and about 3 min on Amazon-all ($4.4\times10^6$ edges).
+
+\section{Pre-registration records}\label{app:prereg}
+Table~\ref{tab:hashes} lists the protocol files, written before the corresponding results were computed, and their SHA-256 hashes. The freeze record for RQ4 stores the selected rule, its development scores, and the hashes of the protocol, the rule implementation, and the evaluator. The T2 labels were written to a separate directory, and the evaluator refused to read them until the freeze record existed. One protocol deviation occurred: the RQ4 protocol named the held-out file \texttt{cs.mat} ``Amazon-Computers''; the file is Coauthor-CS (18,333 nodes, 6,805 features). The file, not the name, was fixed in the protocol, and no result depends on the label.
+
+\begin{table}[h]
+\caption{Pre-registered protocol files.}
+\label{tab:hashes}
+\footnotesize
+\begin{tabular}{@{}lll@{}}
+\toprule
+Analysis & File & SHA-256 (first 16 hex digits) \\
+\midrule
+RQ4 label-free rules & \texttt{PROTOCOL.md} & \texttt{dd13be824cdb8ada} \\
+RQ5 feasibility check & \texttt{FEWSHOT\_PROTOCOL.md} & \input{gen/hash_fs.tex} \\
+RQ5 comparison & \texttt{FEWSHOT\_COMPARISON\_PROTOCOL.md} & \texttt{af23bdaf80d62a03} \\
+\botrule
+\end{tabular}
+\end{table}
+
+\section{Dataset versions}\label{app:versions}
+The Facebook file used here is byte-identical to the TAM artifact used in the original evaluation. The Amazon file from the CARE-GNN repository reproduces the original 8,639-node U-P-U evaluation exactly; its homogeneous relation defines Amazon-all. The Reddit \texttt{.mat} file shares graph and labels with the PyGOD/BOND file but not features. The UNPrompt Weibo file is used in the organic suite and the ARC Weibo file in the ARC comparison, matching the files behind each published table.
+
+\end{appendices}
+
+\bibliography{refs}
+
+\end{document}

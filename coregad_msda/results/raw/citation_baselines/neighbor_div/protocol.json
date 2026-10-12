@@ -1,0 +1,36 @@
+{
+  "method": "NeighborDiv",
+  "implementation": "equation-faithful independent reproduction",
+  "paper": "arXiv:2605.20879v1",
+  "official_code_status_at_freeze": "no official code link found in paper",
+  "graphs": [
+    "cora",
+    "citeseer",
+    "pubmed"
+  ],
+  "mechanisms": [
+    "cross_community_edges",
+    "degree_preserving_rewire",
+    "ego_edge_deletion",
+    "hub_star_injection"
+  ],
+  "seeds": [
+    11,
+    23,
+    37,
+    53,
+    71
+  ],
+  "anomaly_fraction": 0.05,
+  "projection_rank": 8,
+  "svd": "sklearn randomized_svd with fixed random_state=0",
+  "neighbor_pairs": "exhaustive unordered pairs",
+  "calibration": "absolute deviation from valid-node median, then valid-node z-score",
+  "low_degree_score": 0.0,
+  "target_labels": "loaded only after scores are constructed; evaluation only",
+  "target_specific_tuning": false,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "sklearn": "1.8.0"
+}

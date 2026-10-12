@@ -1,0 +1,112 @@
+[
+  {
+    "finite_scores": true,
+    "mean_supported_statistics": 8.932469935245143,
+    "zero_evidence_nodes": 0,
+    "minimum_reference_count": 795,
+    "maximum_reference_count": 1079,
+    "neighborhood_exclusion_checks": 9656,
+    "dataset": "Facebook_TAM",
+    "seed": 11,
+    "seconds": 1.8238985220004906
+  },
+  {
+    "finite_scores": true,
+    "mean_supported_statistics": 8.932469935245143,
+    "zero_evidence_nodes": 0,
+    "minimum_reference_count": 795,
+    "maximum_reference_count": 1079,
+    "neighborhood_exclusion_checks": 9656,
+    "dataset": "Facebook_TAM",
+    "seed": 23,
+    "seconds": 1.7293341289996533
+  },
+  {
+    "finite_scores": true,
+    "mean_supported_statistics": 8.932469935245143,
+    "zero_evidence_nodes": 0,
+    "minimum_reference_count": 795,
+    "maximum_reference_count": 1079,
+    "neighborhood_exclusion_checks": 9656,
+    "dataset": "Facebook_TAM",
+    "seed": 37,
+    "seconds": 1.6169161039997562
+  },
+  {
+    "finite_scores": true,
+    "mean_supported_statistics": 8.932469935245143,
+    "zero_evidence_nodes": 0,
+    "minimum_reference_count": 795,
+    "maximum_reference_count": 1079,
+    "neighborhood_exclusion_checks": 9656,
+    "dataset": "Facebook_TAM",
+    "seed": 53,
+    "seconds": 1.5205477050003537
+  },
+  {
+    "finite_scores": true,
+    "mean_supported_statistics": 8.932469935245143,
+    "zero_evidence_nodes": 0,
+    "minimum_reference_count": 795,
+    "maximum_reference_count": 1079,
+    "neighborhood_exclusion_checks": 9656,
+    "dataset": "Facebook_TAM",
+    "seed": 71,
+    "seconds": 1.449156631999358
+  },
+  {
+    "finite_scores": true,
+    "mean_supported_statistics": 8.900552486187845,
+    "zero_evidence_nodes": 0,
+    "minimum_reference_count": 795,
+    "maximum_reference_count": 1085,
+    "neighborhood_exclusion_checks": 9666,
+    "dataset": "Facebook_ConAD",
+    "seed": 11,
+    "seconds": 1.5838705430005575
+  },
+  {
+    "finite_scores": true,
+    "mean_supported_statistics": 8.900552486187845,
+    "zero_evidence_nodes": 0,
+    "minimum_reference_count": 795,
+    "maximum_reference_count": 1085,
+    "neighborhood_exclusion_checks": 9666,
+    "dataset": "Facebook_ConAD",
+    "seed": 23,
+    "seconds": 1.6702351530002488
+  },
+  {
+    "finite_scores": true,
+    "mean_supported_statistics": 8.900552486187845,
+    "zero_evidence_nodes": 0,
+    "minimum_reference_count": 795,
+    "maximum_reference_count": 1085,
+    "neighborhood_exclusion_checks": 9666,
+    "dataset": "Facebook_ConAD",
+    "seed": 37,
+    "seconds": 1.5240197719995194
+  },
+  {
+    "finite_scores": true,
+    "mean_supported_statistics": 8.900552486187845,
+    "zero_evidence_nodes": 0,
+    "minimum_reference_count": 795,
+    "maximum_reference_count": 1085,
+    "neighborhood_exclusion_checks": 9666,
+    "dataset": "Facebook_ConAD",
+    "seed": 53,
+    "seconds": 1.7551148799993825
+  },
+  {
+    "finite_scores": true,
+    "mean_supported_statistics": 8.900552486187845,
+    "zero_evidence_nodes": 0,
+    "minimum_reference_count": 795,
+    "maximum_reference_count": 1085,
+    "neighborhood_exclusion_checks": 9666,
+    "dataset": "Facebook_ConAD",
+    "seed": 71,
+    "seconds": 1.5569877919997452
+  }
+]

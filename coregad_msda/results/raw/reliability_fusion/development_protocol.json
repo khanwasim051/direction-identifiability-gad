@@ -1,0 +1,38 @@
+{
+  "status": "exploratory aggregation development; frozen before evaluation scoring",
+  "development_graphs": [
+    "cora",
+    "citeseer"
+  ],
+  "development_seeds": [
+    11,
+    23,
+    37
+  ],
+  "development_mechanisms": [
+    "cross_community_edges",
+    "degree_preserving_rewire",
+    "ego_edge_deletion",
+    "hub_star_injection"
+  ],
+  "candidate_rules": [
+    "fixed_all_mean",
+    "fixed_branch_max",
+    "reliability_mean",
+    "weighted_stouffer",
+    "weighted_cauchy",
+    "reliability_max",
+    "reliability_branch_max",
+    "branch_cauchy_max"
+  ],
+  "selection_criterion": "maximize mean of normalized AUROC gain above 0.5 and normalized AP gain above run prevalence",
+  "selection_formula": "mean_run(0.5*((AUROC-0.5)/0.5 + (AP-prevalence)/(1-prevalence)))",
+  "tie_breaking": "higher mean AUROC, then higher mean AP, then lexicographic name",
+  "evaluation_not_accessed_during_selection": true,
+  "reliability": {
+    "support": "exact retained reference fraction n_ik/(N_valid,k-1)",
+    "dispersion": "min(1, IQR(|rank|)/0.5)",
+    "stability": "1-|local neighborhood-excluded rank - full marginal rank|/2",
+    "combined": "product of support, dispersion, and stability"
+  }
+}

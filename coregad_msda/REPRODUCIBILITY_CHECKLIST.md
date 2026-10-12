@@ -1,0 +1,21 @@
+# Reproducibility checklist
+
+- [x] Final method name and frozen variant recorded.
+- [x] Development, holdout, transfer, and post-freeze roles distinguished.
+- [x] Fixed seeds recorded: 11, 23, 37, 53, and 71.
+- [x] Four controlled anomaly mechanisms documented.
+- [x] Target labels withheld from score construction.
+- [x] Run-level AUROC and AP retained.
+- [x] Frozen evidence and aggregation JSON files retained.
+- [x] Baseline hyperparameters and source commits recorded.
+- [x] Efficiency, memory, parameter, and training requirements retained.
+- [x] Facebook artifact discrepancy and hashes documented.
+- [x] ReFi-GAD protocol mismatch documented without inventing a numeric result.
+- [x] Weibo excluded from final manuscript-facing evidence.
+- [x] Dataset download/checksum procedure included.
+- [x] Per-node score-export utility included.
+- [x] Release integrity validation included.
+- [ ] Replace citation-template author placeholders.
+- [ ] Select and add the intended software license.
+- [ ] Add the accepted manuscript DOI when available.
+- [ ] Create a tagged public release and archive it with a persistent DOI.

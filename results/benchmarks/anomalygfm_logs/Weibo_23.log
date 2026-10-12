@@ -1,0 +1,152 @@
+Dataset Train:  Facebook_svd
+Dataset Test:  Weibo_svd
+Test Counter({np.int64(0): 7537, np.int64(1): 868})
+55104
+  0%|          | 0/301 [00:00<?, ?it/s]Training:   0%|          | 0/301 [00:00<?, ?it/s]Epoch: 0000 loss = 10.82088
+Val Traininig Facebook_svd AUC:0.2358
+Val Traininig AP: 0.017857142857142856
+Val Abnormal  Traininig Facebook_svd AUC measure:0.2547
+Val Abnormal Traininig AP measure: 0.018524235875270145
+Val Normal Traininig Facebook_svd AUC measure:0.6368
+Val Normal Traininig AP measure: 0.03650793650793651
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 0
+Testing Weibo_svd AUC:0.5087
+Testing AP: 0.11531027386960353
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Weibo_svd AUC_measure:0.4503
+Normal Testing AP_measure: 0.09859853277590822
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Weibo_svd AUC_measure:0.4895
+Abnormal Testing AP_measure: 0.1308169939975408
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Weibo_svd AUC_measure:0.4436
+Mid Testing AP_measure: 0.09681618561716576
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0050 loss = 10.45146
+Val Traininig Facebook_svd AUC:0.8774
+Val Traininig AP: 0.12681159420289856
+Val Abnormal  Traininig Facebook_svd AUC measure:0.8868
+Val Abnormal Traininig AP measure: 0.10795454545454546
+Val Normal Traininig Facebook_svd AUC measure:0.0708
+Val Normal Traininig AP measure: 0.01472213847854487
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 50
+Testing Weibo_svd AUC:0.4765
+Testing AP: 0.08949723250623168
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Weibo_svd AUC_measure:0.3975
+Normal Testing AP_measure: 0.11112114367180828
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Weibo_svd AUC_measure:0.5323
+Abnormal Testing AP_measure: 0.14890297205714093
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Weibo_svd AUC_measure:0.3837
+Mid Testing AP_measure: 0.10792935421316065
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0100 loss = 8.92656
+Val Traininig Facebook_svd AUC:0.8821
+Val Traininig AP: 0.12878787878787878
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9764
+Val Abnormal Traininig AP measure: 0.41666666666666663
+Val Normal Traininig Facebook_svd AUC measure:0.0330
+Val Normal Traininig AP measure: 0.014335923048464668
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 100
+Testing Weibo_svd AUC:0.4508
+Testing AP: 0.08560769715715431
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Weibo_svd AUC_measure:0.5009
+Normal Testing AP_measure: 0.1546605075468102
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Weibo_svd AUC_measure:0.5163
+Abnormal Testing AP_measure: 0.1582250673883126
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Weibo_svd AUC_measure:0.5028
+Mid Testing AP_measure: 0.15693938745710956
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0150 loss = 8.20827
+Val Traininig Facebook_svd AUC:0.8915
+Val Traininig AP: 0.13333333333333333
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9811
+Val Abnormal Traininig AP measure: 0.6666666666666666
+Val Normal Traininig Facebook_svd AUC measure:0.0189
+Val Normal Traininig AP measure: 0.014113628191298093
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 150
+Testing Weibo_svd AUC:0.4205
+Testing AP: 0.0811630721894931
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Weibo_svd AUC_measure:0.5501
+Normal Testing AP_measure: 0.27013267075265857
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Weibo_svd AUC_measure:0.4601
+Abnormal Testing AP_measure: 0.18365973758420362
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Weibo_svd AUC_measure:0.5516
+Mid Testing AP_measure: 0.2706385705784844
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0200 loss = 8.49609
+Val Traininig Facebook_svd AUC:0.8915
+Val Traininig AP: 0.12406015037593984
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9811
+Val Abnormal Traininig AP measure: 0.6666666666666666
+Val Normal Traininig Facebook_svd AUC measure:0.0189
+Val Normal Traininig AP measure: 0.014113628191298093
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 200
+Testing Weibo_svd AUC:0.3970
+Testing AP: 0.07789970910804149
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Weibo_svd AUC_measure:0.5472
+Normal Testing AP_measure: 0.23333675865996195
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Weibo_svd AUC_measure:0.4611
+Abnormal Testing AP_measure: 0.1359723019881972
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Weibo_svd AUC_measure:0.5467
+Mid Testing AP_measure: 0.23174654854590426
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0250 loss = 8.62330
+Val Traininig Facebook_svd AUC:0.9057
+Val Traininig AP: 0.13392857142857142
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9811
+Val Abnormal Traininig AP measure: 0.45
+Val Normal Traininig Facebook_svd AUC measure:0.0330
+Val Normal Traininig AP measure: 0.01425925925925926
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 250
+Testing Weibo_svd AUC:0.3814
+Testing AP: 0.07599119337431154
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Weibo_svd AUC_measure:0.5435
+Normal Testing AP_measure: 0.22249921317681975
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Weibo_svd AUC_measure:0.4633
+Abnormal Testing AP_measure: 0.13930603812241002
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Weibo_svd AUC_measure:0.5450
+Mid Testing AP_measure: 0.22323082462229815
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0300 loss = 8.43046
+Val Traininig Facebook_svd AUC:0.9104
+Val Traininig AP: 0.13392857142857142
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9434
+Val Abnormal Traininig AP measure: 0.2159090909090909
+Val Normal Traininig Facebook_svd AUC measure:0.0330
+Val Normal Traininig AP measure: 0.01425925925925926
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 300
+Testing Weibo_svd AUC:0.3722
+Testing AP: 0.07499206075241562
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Weibo_svd AUC_measure:0.5506
+Normal Testing AP_measure: 0.1889051653652495
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Weibo_svd AUC_measure:0.4663
+Abnormal Testing AP_measure: 0.13709104961094565
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Weibo_svd AUC_measure:0.5554
+Mid Testing AP_measure: 0.18916515686361202
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Training:   0%|          | 0/301 [00:40<?, ?it/s]

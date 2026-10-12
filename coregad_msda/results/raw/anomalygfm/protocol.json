@@ -1,0 +1,30 @@
+{
+  "status": "completed independent equation-faithful sparse refactor",
+  "official_repository": "https://github.com/mala-lab/AnomalyGFM",
+  "source": "official Facebook_svd.mat aligned source graph",
+  "targets": [
+    "Reddit",
+    "Amazon"
+  ],
+  "weibo_excluded": true,
+  "amazon_graph": "same 11944-node U-P-U graph and 8639-node evaluation mask used by all other methods",
+  "target_feature_alignment": "official aligned Reddit features; rank-8 U Sigma SVD for Amazon",
+  "source_labels_used": true,
+  "target_labels_used_for_scoring_or_tuning": false,
+  "epochs": 301,
+  "learning_rate": 0.0001,
+  "embedding_dim": 400,
+  "final_score": "exp(abnormal cosine) + 6 * exp(-normal cosine)",
+  "dense_to_sparse_change": "algebraically identical adjacency propagation and neighbor mean",
+  "seeds": [
+    11,
+    23,
+    37,
+    53,
+    71
+  ],
+  "torch_threads": 8,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "torch": "2.7.1+cpu"
+}

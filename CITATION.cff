@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code or results, please cite the paper."
+title: "Which way is anomalous? Direction identifiability in training-free graph anomaly detection"
+type: software
+authors:
+  - family-names: Khan
+    given-names: Wasim
+  - family-names: Waheed
+    given-names: Shaikh Abdul
+  - family-names: Wakchaure
+    given-names: Sujit R.
+  - family-names: Patil
+    given-names: Anjali Devi
+  - family-names: Varshney
+    given-names: Deepti
+  - family-names: Khan
+    given-names: Vajid
+  - family-names: More
+    given-names: Anjali S.
+license: MIT
+version: "1.0.0"
+date-released: "2026-10-12"

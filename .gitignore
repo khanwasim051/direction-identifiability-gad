@@ -1,0 +1,19 @@
+# downloaded datasets and working files (re-created by the scripts)
+data/*
+!data/download_data.py
+work/
+coregad_msda/condcal_cora/data/
+coregad_msda/condcal_amazon/data/
+coregad_msda/facebook_evaluation/data/
+# Python and LaTeX by-products
+__pycache__/
+*.pyc
+.venv/
+paper/latex/*.aux
+paper/latex/*.log
+paper/latex/*.out
+paper/latex/*.bbl
+paper/latex/*.blg
+paper/latex/*.fls
+paper/latex/*.fdb_latexmk
+paper/latex/*.synctex.gz

@@ -1,0 +1,17 @@
+{
+  "status": "frozen_before_evaluation",
+  "selected_evidence_bank": "directional_h1",
+  "fixed_aggregation": "reliability_branch_max",
+  "candidate_order": [
+    "directional_h1",
+    "directional_h12",
+    "directional_h123",
+    "directional_h123_degree",
+    "directional_original",
+    "twosided_h123_degree"
+  ],
+  "evaluation_variants": [
+    "directional_h1",
+    "original_twosided"
+  ]
+}

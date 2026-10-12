@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "selected_evidence_bank": "directional_h1",
+  "evaluation_metric_rows": 92,
+  "source_run_metric_rows": 102,
+  "excluded_weibo_rows": 10,
+  "target_labels_used_for_scoring": false,
+  "trainable_parameters": 0,
+  "training_required": false,
+  "elapsed_seconds_source_run_including_excluded_diagnostic": 363.38339675,
+  "peak_rss_mib": 852.69921875,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "sklearn": "1.8.0"
+}

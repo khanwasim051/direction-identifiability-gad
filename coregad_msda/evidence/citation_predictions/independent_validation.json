@@ -1,0 +1,551 @@
+{
+  "status": "passed",
+  "graph_mechanism_seed_runs_checked": 60,
+  "score_vectors_checked": 540,
+  "metric_rows_checked": 1080,
+  "brute_force_exact_rank_checks": 2457,
+  "maximum_score_absolute_error": 0.0,
+  "maximum_metric_absolute_error": 0.0,
+  "modification_checks": [
+    {
+      "graph": "cora",
+      "seed": 11,
+      "mechanism": "cross_community_edges",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 11,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 11,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 11,
+      "mechanism": "hub_star_injection",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 23,
+      "mechanism": "cross_community_edges",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 23,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 23,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 23,
+      "mechanism": "hub_star_injection",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 37,
+      "mechanism": "cross_community_edges",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 37,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 37,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 37,
+      "mechanism": "hub_star_injection",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 53,
+      "mechanism": "cross_community_edges",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 53,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 53,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 53,
+      "mechanism": "hub_star_injection",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 71,
+      "mechanism": "cross_community_edges",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 71,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 71,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "cora",
+      "seed": 71,
+      "mechanism": "hub_star_injection",
+      "nodes": 2708,
+      "anchors": 135,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 11,
+      "mechanism": "cross_community_edges",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 11,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 11,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 11,
+      "mechanism": "hub_star_injection",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 23,
+      "mechanism": "cross_community_edges",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 23,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 23,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 23,
+      "mechanism": "hub_star_injection",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 37,
+      "mechanism": "cross_community_edges",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 37,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 37,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 37,
+      "mechanism": "hub_star_injection",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 53,
+      "mechanism": "cross_community_edges",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 53,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 53,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 53,
+      "mechanism": "hub_star_injection",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 71,
+      "mechanism": "cross_community_edges",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 71,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 71,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "citeseer",
+      "seed": 71,
+      "mechanism": "hub_star_injection",
+      "nodes": 3327,
+      "anchors": 166,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 11,
+      "mechanism": "cross_community_edges",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 11,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 11,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 11,
+      "mechanism": "hub_star_injection",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 23,
+      "mechanism": "cross_community_edges",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 23,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 23,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 23,
+      "mechanism": "hub_star_injection",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 37,
+      "mechanism": "cross_community_edges",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 37,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 37,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 37,
+      "mechanism": "hub_star_injection",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 53,
+      "mechanism": "cross_community_edges",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 53,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 53,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 53,
+      "mechanism": "hub_star_injection",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 71,
+      "mechanism": "cross_community_edges",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 71,
+      "mechanism": "degree_preserving_rewire",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": true,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 71,
+      "mechanism": "ego_edge_deletion",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    },
+    {
+      "graph": "pubmed",
+      "seed": 71,
+      "mechanism": "hub_star_injection",
+      "nodes": 19717,
+      "anchors": 985,
+      "degree_sequence_preserved": null,
+      "symmetric_loop_free_graph": true
+    }
+  ]
+}

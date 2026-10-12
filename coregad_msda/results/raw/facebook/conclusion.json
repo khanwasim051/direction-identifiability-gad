@@ -1,0 +1,10 @@
+{
+  "primary_dataset": "Facebook_TAM",
+  "favorable_by_mean_auroc": true,
+  "favorable_by_mean_ap": true,
+  "core_auroc_mean": 0.87775,
+  "best_baseline_auroc_mean": 0.6116856060606061,
+  "core_ap_mean": 0.1938783472520267,
+  "best_baseline_ap_mean": 0.04959058783292946,
+  "manuscript_rule": "Include as supportive only if the frozen method is competitive and dataset-version discrepancy is disclosed."
+}

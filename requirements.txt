@@ -1,0 +1,12 @@
+# Tested with Python 3.13 and the versions below (the original release used Python 3.12; see coregad_msda/requirements.txt).
+numpy>=2.0
+scipy>=1.13
+scikit-learn>=1.5
+matplotlib>=3.9
+threadpoolctl>=3.5
+# Only for baselines (DOMINANT, UNPrompt, AnomalyGFM). CoRe-GAD-MSDA itself needs only the packages above.
+torch>=2.3
+torch-geometric>=2.5
+pygod>=1.1
+networkx>=3.0
+tqdm>=4.60

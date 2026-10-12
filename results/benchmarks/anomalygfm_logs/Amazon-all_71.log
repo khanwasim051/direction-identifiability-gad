@@ -1,0 +1,152 @@
+Dataset Train:  Facebook_svd
+Dataset Test:  Amazon-all_svd
+Test Counter({np.float64(0.0): 11123, np.float64(1.0): 821})
+55104
+  0%|          | 0/301 [00:00<?, ?it/s]Training:   0%|          | 0/301 [00:00<?, ?it/s]Epoch: 0000 loss = 9.15036
+Val Traininig Facebook_svd AUC:0.4717
+Val Traininig AP: 0.02535559678416821
+Val Abnormal  Traininig Facebook_svd AUC measure:0.5377
+Val Abnormal Traininig AP measure: 0.028869286287089013
+Val Normal Traininig Facebook_svd AUC measure:0.6179
+Val Normal Traininig AP measure: 0.03469387755102041
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 0
+Testing Amazon-all_svd AUC:0.7175
+Testing AP: 0.14465169859332205
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Amazon-all_svd AUC_measure:0.3987
+Normal Testing AP_measure: 0.058983263573729405
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Amazon-all_svd AUC_measure:0.5649
+Abnormal Testing AP_measure: 0.07906637870989515
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Amazon-all_svd AUC_measure:0.3937
+Mid Testing AP_measure: 0.05776469906500717
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0050 loss = 9.05677
+Val Traininig Facebook_svd AUC:0.8774
+Val Traininig AP: 0.10238095238095238
+Val Abnormal  Traininig Facebook_svd AUC measure:0.8113
+Val Abnormal Traininig AP measure: 0.06828703703703703
+Val Normal Traininig Facebook_svd AUC measure:0.2311
+Val Normal Traininig AP measure: 0.017655677655677656
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 50
+Testing Amazon-all_svd AUC:0.6466
+Testing AP: 0.10948601862148251
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Amazon-all_svd AUC_measure:0.3094
+Normal Testing AP_measure: 0.048146936297555024
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Amazon-all_svd AUC_measure:0.7536
+Abnormal Testing AP_measure: 0.16563505083471627
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Amazon-all_svd AUC_measure:0.3185
+Mid Testing AP_measure: 0.048438101554177576
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0100 loss = 8.85166
+Val Traininig Facebook_svd AUC:0.8915
+Val Traininig AP: 0.11212121212121212
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9717
+Val Abnormal Traininig AP measure: 0.325
+Val Normal Traininig Facebook_svd AUC measure:0.0425
+Val Normal Traininig AP measure: 0.014474304573314476
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 100
+Testing Amazon-all_svd AUC:0.5958
+Testing AP: 0.0848705496271722
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Amazon-all_svd AUC_measure:0.2208
+Normal Testing AP_measure: 0.04120671170255098
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Amazon-all_svd AUC_measure:0.7951
+Abnormal Testing AP_measure: 0.3477076210635081
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Amazon-all_svd AUC_measure:0.2247
+Mid Testing AP_measure: 0.041403900083639714
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0150 loss = 8.58030
+Val Traininig Facebook_svd AUC:0.9104
+Val Traininig AP: 0.13392857142857142
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9481
+Val Abnormal Traininig AP measure: 0.20833333333333331
+Val Normal Traininig Facebook_svd AUC measure:0.0330
+Val Normal Traininig AP measure: 0.014335923048464668
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 150
+Testing Amazon-all_svd AUC:0.5784
+Testing AP: 0.07921198981072447
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Amazon-all_svd AUC_measure:0.1758
+Normal Testing AP_measure: 0.03885135317270243
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Amazon-all_svd AUC_measure:0.8517
+Abnormal Testing AP_measure: 0.438098567858073
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Amazon-all_svd AUC_measure:0.1816
+Mid Testing AP_measure: 0.03907506477149596
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0200 loss = 8.81255
+Val Traininig Facebook_svd AUC:0.8962
+Val Traininig AP: 0.1213235294117647
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9387
+Val Abnormal Traininig AP measure: 0.18333333333333335
+Val Normal Traininig Facebook_svd AUC measure:0.0613
+Val Normal Traininig AP measure: 0.01475924291458272
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 200
+Testing Amazon-all_svd AUC:0.5738
+Testing AP: 0.07784374035750957
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Amazon-all_svd AUC_measure:0.1398
+Normal Testing AP_measure: 0.037651779003949705
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Amazon-all_svd AUC_measure:0.8615
+Abnormal Testing AP_measure: 0.43681929009040615
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Amazon-all_svd AUC_measure:0.1412
+Mid Testing AP_measure: 0.03769170620622878
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0250 loss = 8.09630
+Val Traininig Facebook_svd AUC:0.8962
+Val Traininig AP: 0.1213235294117647
+Val Abnormal  Traininig Facebook_svd AUC measure:0.8585
+Val Abnormal Traininig AP measure: 0.09347826086956522
+Val Normal Traininig Facebook_svd AUC measure:0.1415
+Val Normal Traininig AP measure: 0.015951208069434668
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 250
+Testing Amazon-all_svd AUC:0.5711
+Testing AP: 0.07713615953662042
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Amazon-all_svd AUC_measure:0.0985
+Normal Testing AP_measure: 0.03643457389663981
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Amazon-all_svd AUC_measure:0.8766
+Abnormal Testing AP_measure: 0.5031963078347432
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Amazon-all_svd AUC_measure:0.0959
+Mid Testing AP_measure: 0.036377340785506716
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0300 loss = 8.19602
+Val Traininig Facebook_svd AUC:0.8915
+Val Traininig AP: 0.11437908496732026
+Val Abnormal  Traininig Facebook_svd AUC measure:0.8774
+Val Abnormal Traininig AP measure: 0.11688311688311688
+Val Normal Traininig Facebook_svd AUC measure:0.1509
+Val Normal Traininig AP measure: 0.01608643457382953
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 300
+Testing Amazon-all_svd AUC:0.5674
+Testing AP: 0.07629990698690811
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Amazon-all_svd AUC_measure:0.0944
+Normal Testing AP_measure: 0.036363539801014796
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Amazon-all_svd AUC_measure:0.8613
+Abnormal Testing AP_measure: 0.43799416319656614
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Amazon-all_svd AUC_measure:0.0919
+Mid Testing AP_measure: 0.03631026088987554
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Training:   0%|          | 0/301 [01:03<?, ?it/s]

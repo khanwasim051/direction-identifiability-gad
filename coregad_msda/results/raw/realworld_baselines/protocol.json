@@ -1,0 +1,53 @@
+{
+  "datasets": [
+    "Reddit",
+    "Amazon"
+  ],
+  "excluded_dataset": "Weibo",
+  "labels": "organic benchmark labels; evaluation only",
+  "amazon_evaluation_mask": "nodes 3305:11944, matching the CARE-GNN/PyGOD convention",
+  "target_specific_hyperparameter_tuning": false,
+  "deterministic_methods": [
+    "NeighborDiv",
+    "FreeGAD"
+  ],
+  "stochastic_method_seeds": {
+    "DOMINANT": [
+      11,
+      23,
+      37,
+      53,
+      71
+    ]
+  },
+  "NeighborDiv": {
+    "implementation": "equation-faithful reproduction",
+    "projection_rank": 8,
+    "svd_random_state": 0,
+    "neighbor_pairs": "exhaustive unordered pairs"
+  },
+  "FreeGAD": {
+    "implementation": "equation-faithful reproduction of official scoring equations",
+    "alpha": 0.010974988,
+    "beta": 0.205651231,
+    "num_hops": 7,
+    "num_anchors": 70,
+    "preset": "official Cora preset transferred unchanged"
+  },
+  "DOMINANT": {
+    "implementation": "official PyGOD layers with exact sparse structure-error identity",
+    "official_commit": "c84dccafa9bf587cd03cfd3e89b9be7a8f3337e8",
+    "hidden_dim": 64,
+    "num_layers": 4,
+    "epochs": 20,
+    "learning_rate": 0.004,
+    "reconstruction_weight": 0.5
+  },
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "sklearn": "1.8.0",
+  "torch": "2.7.1+cpu",
+  "torch_geometric": "2.6.1",
+  "pygod": "1.1.0"
+}

@@ -1,0 +1,152 @@
+Dataset Train:  Facebook_svd
+Dataset Test:  Tolokers_svd
+Test Counter({np.int64(0): 9192, np.int64(1): 2566})
+55104
+  0%|          | 0/301 [00:00<?, ?it/s]Training:   0%|          | 0/301 [00:00<?, ?it/s]Epoch: 0000 loss = 9.15036
+Val Traininig Facebook_svd AUC:0.4717
+Val Traininig AP: 0.02535559678416821
+Val Abnormal  Traininig Facebook_svd AUC measure:0.5377
+Val Abnormal Traininig AP measure: 0.028869286287089013
+Val Normal Traininig Facebook_svd AUC measure:0.6179
+Val Normal Traininig AP measure: 0.03469387755102041
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 0
+Testing Tolokers_svd AUC:0.4542
+Testing AP: 0.20287969906172298
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Tolokers_svd AUC_measure:0.4435
+Normal Testing AP_measure: 0.20666727131716045
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Tolokers_svd AUC_measure:0.3856
+Abnormal Testing AP_measure: 0.18347213872221546
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Tolokers_svd AUC_measure:0.4261
+Mid Testing AP_measure: 0.19408559329901925
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0050 loss = 9.05677
+Val Traininig Facebook_svd AUC:0.8774
+Val Traininig AP: 0.10238095238095238
+Val Abnormal  Traininig Facebook_svd AUC measure:0.8113
+Val Abnormal Traininig AP measure: 0.06828703703703703
+Val Normal Traininig Facebook_svd AUC measure:0.2311
+Val Normal Traininig AP measure: 0.017655677655677656
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 50
+Testing Tolokers_svd AUC:0.4975
+Testing AP: 0.2188013990451198
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Tolokers_svd AUC_measure:0.4504
+Normal Testing AP_measure: 0.20776833101542141
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Tolokers_svd AUC_measure:0.5826
+Abnormal Testing AP_measure: 0.2542619968560531
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Tolokers_svd AUC_measure:0.4594
+Mid Testing AP_measure: 0.2109803988852319
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0100 loss = 8.85166
+Val Traininig Facebook_svd AUC:0.8915
+Val Traininig AP: 0.11212121212121212
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9717
+Val Abnormal Traininig AP measure: 0.325
+Val Normal Traininig Facebook_svd AUC measure:0.0425
+Val Normal Traininig AP measure: 0.014474304573314476
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 100
+Testing Tolokers_svd AUC:0.4946
+Testing AP: 0.217214285339358
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Tolokers_svd AUC_measure:0.3953
+Normal Testing AP_measure: 0.18058962276507995
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Tolokers_svd AUC_measure:0.6153
+Abnormal Testing AP_measure: 0.29659005897129076
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Tolokers_svd AUC_measure:0.3974
+Mid Testing AP_measure: 0.18083194346868653
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0150 loss = 8.58030
+Val Traininig Facebook_svd AUC:0.9104
+Val Traininig AP: 0.13392857142857142
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9481
+Val Abnormal Traininig AP measure: 0.20833333333333331
+Val Normal Traininig Facebook_svd AUC measure:0.0330
+Val Normal Traininig AP measure: 0.014335923048464668
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 150
+Testing Tolokers_svd AUC:0.4858
+Testing AP: 0.21377564619764305
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Tolokers_svd AUC_measure:0.3863
+Normal Testing AP_measure: 0.1854106426220793
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Tolokers_svd AUC_measure:0.6018
+Abnormal Testing AP_measure: 0.29743419992308656
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Tolokers_svd AUC_measure:0.3854
+Mid Testing AP_measure: 0.18518742970587776
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0200 loss = 8.81255
+Val Traininig Facebook_svd AUC:0.8962
+Val Traininig AP: 0.1213235294117647
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9387
+Val Abnormal Traininig AP measure: 0.18333333333333335
+Val Normal Traininig Facebook_svd AUC measure:0.0613
+Val Normal Traininig AP measure: 0.01475924291458272
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 200
+Testing Tolokers_svd AUC:0.4776
+Testing AP: 0.21078488264970272
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Tolokers_svd AUC_measure:0.3856
+Normal Testing AP_measure: 0.1843347882083849
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Tolokers_svd AUC_measure:0.6039
+Abnormal Testing AP_measure: 0.2986600695397544
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Tolokers_svd AUC_measure:0.3838
+Mid Testing AP_measure: 0.18376059919191917
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0250 loss = 8.09630
+Val Traininig Facebook_svd AUC:0.8962
+Val Traininig AP: 0.1213235294117647
+Val Abnormal  Traininig Facebook_svd AUC measure:0.8585
+Val Abnormal Traininig AP measure: 0.09347826086956522
+Val Normal Traininig Facebook_svd AUC measure:0.1415
+Val Normal Traininig AP measure: 0.015951208069434668
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 250
+Testing Tolokers_svd AUC:0.4706
+Testing AP: 0.20762630992097295
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Tolokers_svd AUC_measure:0.4259
+Normal Testing AP_measure: 0.19893611883026663
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Tolokers_svd AUC_measure:0.5802
+Abnormal Testing AP_measure: 0.28979167386477944
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Tolokers_svd AUC_measure:0.4277
+Mid Testing AP_measure: 0.19933365132493175
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0300 loss = 8.19602
+Val Traininig Facebook_svd AUC:0.8915
+Val Traininig AP: 0.11437908496732026
+Val Abnormal  Traininig Facebook_svd AUC measure:0.8774
+Val Abnormal Traininig AP measure: 0.11688311688311688
+Val Normal Traininig Facebook_svd AUC measure:0.1509
+Val Normal Traininig AP measure: 0.01608643457382953
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 300
+Testing Tolokers_svd AUC:0.4652
+Testing AP: 0.20506289239085237
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Tolokers_svd AUC_measure:0.4164
+Normal Testing AP_measure: 0.19568639666981041
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Tolokers_svd AUC_measure:0.5637
+Abnormal Testing AP_measure: 0.27763069722122535
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Tolokers_svd AUC_measure:0.4114
+Mid Testing AP_measure: 0.19449924025007642
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Training:   0%|          | 0/301 [00:56<?, ?it/s]

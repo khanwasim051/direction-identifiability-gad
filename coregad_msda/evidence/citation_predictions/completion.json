@@ -1,0 +1,8 @@
+{
+  "status": "complete",
+  "graph_mechanism_seed_runs": 60,
+  "expected_runs": 60,
+  "metric_rows": 1080,
+  "expected_metric_rows": 1080,
+  "seconds": 145.937123176
+}

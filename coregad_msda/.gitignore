@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.log
+external_data/
+facebook_evaluation/data/
+condcal_cora/data/
+condcal_amazon/data/
+reproduced_results/

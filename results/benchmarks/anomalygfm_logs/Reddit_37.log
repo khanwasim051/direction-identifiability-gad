@@ -1,0 +1,152 @@
+Dataset Train:  Facebook_svd
+Dataset Test:  Reddit_svd
+Test Counter({np.float64(0.0): 10618, np.float64(1.0): 366})
+55104
+  0%|          | 0/301 [00:00<?, ?it/s]Training:   0%|          | 0/301 [00:00<?, ?it/s]Epoch: 0000 loss = 10.48784
+Val Traininig Facebook_svd AUC:0.6731
+Val Traininig AP: 0.06544567473508435
+Val Abnormal  Traininig Facebook_svd AUC measure:0.3005
+Val Abnormal Traininig AP measure: 0.03206221882692471
+Val Normal Traininig Facebook_svd AUC measure:0.5962
+Val Normal Traininig AP measure: 0.05331064265846874
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 0
+Testing Reddit_svd AUC:0.5094
+Testing AP: 0.03336259650042953
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Reddit_svd AUC_measure:0.5853
+Normal Testing AP_measure: 0.03879232675739948
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Reddit_svd AUC_measure:0.5319
+Abnormal Testing AP_measure: 0.03294934254613384
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Reddit_svd AUC_measure:0.5949
+Mid Testing AP_measure: 0.03973311001876513
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0050 loss = 9.23337
+Val Traininig Facebook_svd AUC:0.8942
+Val Traininig AP: 0.1934489121989122
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9159
+Val Abnormal Traininig AP measure: 0.24188311688311687
+Val Normal Traininig Facebook_svd AUC measure:0.1082
+Val Normal Traininig AP measure: 0.025368848062002992
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 50
+Testing Reddit_svd AUC:0.5307
+Testing AP: 0.03573433171450559
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Reddit_svd AUC_measure:0.4513
+Normal Testing AP_measure: 0.02724858265671156
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Reddit_svd AUC_measure:0.5599
+Abnormal Testing AP_measure: 0.034666964593275666
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Reddit_svd AUC_measure:0.4500
+Mid Testing AP_measure: 0.027178610042568496
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0100 loss = 8.86669
+Val Traininig Facebook_svd AUC:0.8798
+Val Traininig AP: 0.20230880230880227
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9976
+Val Abnormal Traininig AP measure: 0.95
+Val Normal Traininig Facebook_svd AUC measure:0.0168
+Val Normal Traininig AP measure: 0.02353660659389052
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 100
+Testing Reddit_svd AUC:0.5375
+Testing AP: 0.03662038561824716
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Reddit_svd AUC_measure:0.3986
+Normal Testing AP_measure: 0.024924951226892117
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Reddit_svd AUC_measure:0.6045
+Abnormal Testing AP_measure: 0.03880240603690668
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Reddit_svd AUC_measure:0.3979
+Mid Testing AP_measure: 0.024905481122528043
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0150 loss = 9.40690
+Val Traininig Facebook_svd AUC:0.8774
+Val Traininig AP: 0.21949760765550239
+Val Abnormal  Traininig Facebook_svd AUC measure:1.0000
+Val Abnormal Traininig AP measure: 1.0
+Val Normal Traininig Facebook_svd AUC measure:0.0000
+Val Normal Traininig AP measure: 0.023366538566679636
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 150
+Testing Reddit_svd AUC:0.5359
+Testing AP: 0.03648469185889715
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Reddit_svd AUC_measure:0.3991
+Normal Testing AP_measure: 0.024943238908673136
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Reddit_svd AUC_measure:0.5979
+Abnormal Testing AP_measure: 0.03842189381932338
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Reddit_svd AUC_measure:0.3982
+Mid Testing AP_measure: 0.024911678846191575
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0200 loss = 8.15527
+Val Traininig Facebook_svd AUC:0.8822
+Val Traininig AP: 0.21480880230880228
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9928
+Val Abnormal Traininig AP measure: 0.8541666666666666
+Val Normal Traininig Facebook_svd AUC measure:0.0048
+Val Normal Traininig AP measure: 0.02341277065174667
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 200
+Testing Reddit_svd AUC:0.5358
+Testing AP: 0.036583760582432005
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Reddit_svd AUC_measure:0.4059
+Normal Testing AP_measure: 0.025207497147435635
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Reddit_svd AUC_measure:0.5962
+Abnormal Testing AP_measure: 0.03801157984596027
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Reddit_svd AUC_measure:0.4067
+Mid Testing AP_measure: 0.02524183935083321
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0250 loss = 7.97519
+Val Traininig Facebook_svd AUC:0.8726
+Val Traininig AP: 0.20687134502923976
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9904
+Val Abnormal Traininig AP measure: 0.7708333333333333
+Val Normal Traininig Facebook_svd AUC measure:0.0168
+Val Normal Traininig AP measure: 0.023658418377293808
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 250
+Testing Reddit_svd AUC:0.5355
+Testing AP: 0.0367770657714855
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Reddit_svd AUC_measure:0.4087
+Normal Testing AP_measure: 0.02533393811395533
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Reddit_svd AUC_measure:0.5926
+Abnormal Testing AP_measure: 0.03799292044720454
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Reddit_svd AUC_measure:0.4105
+Mid Testing AP_measure: 0.02544919153481905
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0300 loss = 7.78177
+Val Traininig Facebook_svd AUC:0.8678
+Val Traininig AP: 0.20064102564102565
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9808
+Val Abnormal Traininig AP measure: 0.6428571428571428
+Val Normal Traininig Facebook_svd AUC measure:0.0192
+Val Normal Traininig AP measure: 0.023707465726312098
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 300
+Testing Reddit_svd AUC:0.5358
+Testing AP: 0.036941797643476326
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Reddit_svd AUC_measure:0.4122
+Normal Testing AP_measure: 0.025499625103416315
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Reddit_svd AUC_measure:0.5849
+Abnormal Testing AP_measure: 0.03756991430049291
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Reddit_svd AUC_measure:0.4115
+Mid Testing AP_measure: 0.02544839087423099
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Training:   0%|          | 0/301 [00:55<?, ?it/s]

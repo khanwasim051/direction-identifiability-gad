@@ -1,0 +1,56 @@
+{
+  "status": "frozen_before_results",
+  "graphs": [
+    "cora",
+    "citeseer",
+    "pubmed"
+  ],
+  "mechanisms": [
+    "cross_community_edges",
+    "degree_preserving_rewire",
+    "ego_edge_deletion",
+    "hub_star_injection"
+  ],
+  "seeds": [
+    11,
+    23,
+    37,
+    53,
+    71
+  ],
+  "anomaly_fraction": 0.05,
+  "mechanism_parameters": {
+    "cross_community_edges_per_anchor": 4,
+    "hub_star_edges_per_anchor": 8,
+    "maximum_degree_preserving_swaps_per_anchor": 4,
+    "maximum_ego_edges_deleted_per_anchor": 4
+  },
+  "structural_statistics": [
+    "ego_triangle_load",
+    "unexpected_edge_tail",
+    "motif_incoherence"
+  ],
+  "contextual_statistics": [
+    "node_neighbor_discrepancy",
+    "neighbor_pair_mean",
+    "neighbor_pair_variance",
+    "closure",
+    "neighbor_degree"
+  ],
+  "calibration": "absolute exact empirical mid-rank using all valid nodes except query and immediate neighbors",
+  "aggregation": "coverage-safe fixed mean; fixed max for diagnostic dual-branch fusion",
+  "evaluation_populations": {
+    "all_nodes": "primary; includes normal nodes incidentally touched by interventions",
+    "clean_normal_comparison": "sensitivity; anomaly anchors versus normal nodes whose adjacency was not directly modified"
+  },
+  "acceptance": {
+    "per_mechanism": "mean AUROC > 0.5 and mean AP > prevalence",
+    "improvement": "structural fixed mean improves both AUROC and AP over contextual exact local in at least 3 of 4 mechanisms per graph",
+    "ablation": "all three leave-one-coordinate-out mean AUROCs remain above 0.5"
+  },
+  "target_labels": "created from intervention anchors; passed only to evaluation after all scores are constructed",
+  "target_specific_thresholds_or_fitting": false,
+  "development_status": "all three citation graphs are development graphs; no definitive real-world claim",
+  "python": "3.12.13",
+  "numpy": "2.3.5"
+}

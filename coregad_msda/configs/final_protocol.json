@@ -1,0 +1,31 @@
+{
+  "method": "CoRe-GAD-MSDA",
+  "selected_evidence_bank": "directional_h1",
+  "aggregation": "reliability-weighted contextual/structural branch maximum",
+  "calibration": "exact query-and-immediate-neighborhood-excluded signed midranks",
+  "development": {
+    "datasets": ["cora", "citeseer"],
+    "seeds": [11, 23, 37],
+    "mechanisms": [
+      "cross_community_edges",
+      "degree_preserving_rewire",
+      "ego_edge_deletion",
+      "hub_star_injection"
+    ]
+  },
+  "internal_holdout": {
+    "datasets": ["cora", "citeseer"],
+    "seeds": [53, 71]
+  },
+  "citation_transfer": {
+    "datasets": ["pubmed"],
+    "seeds": [11, 23, 37, 53, 71]
+  },
+  "additional_graphs": ["reddit", "amazon"],
+  "post_freeze_external_graph": "facebook",
+  "excluded_dataset": "weibo",
+  "target_labels_used_for_scoring": false,
+  "target_specific_tuning": false,
+  "trainable_parameters": 0,
+  "training_required": false
+}

@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "checks": {
+    "development_rows_are_24_runs_x_8_candidates": true,
+    "source_evaluation_was_51_runs_x_4_variants": true,
+    "final_release_is_46_runs_x_4_variants_after_weibo_exclusion": true,
+    "frozen_rule_is_reliability_branch_max": true,
+    "only_frozen_and_prespecified_references_evaluated": true,
+    "development_keys_unique": true,
+    "evaluation_keys_unique": true,
+    "all_metrics_finite_and_bounded": true,
+    "fair_comparison_has_5_methods_x_4_rows": true
+  },
+  "note": "Validation checks result structure, split integrity, and numerical bounds. The source implementation constructs scores before reading evaluation labels; development labels are used only to freeze the candidate rule. Twenty Weibo rows were removed from this final release."
+}

@@ -1,0 +1,152 @@
+Dataset Train:  Facebook_svd
+Dataset Test:  Disney_svd
+Test Counter({np.uint8(0): 118, np.uint8(1): 6})
+55104
+  0%|          | 0/301 [00:00<?, ?it/s]Training:   0%|          | 0/301 [00:00<?, ?it/s]Epoch: 0000 loss = 11.11337
+Val Traininig Facebook_svd AUC:0.2952
+Val Traininig AP: 0.0257655924322591
+Val Abnormal  Traininig Facebook_svd AUC measure:0.5175
+Val Abnormal Traininig AP measure: 0.03674331972204313
+Val Normal Traininig Facebook_svd AUC measure:0.6063
+Val Normal Traininig AP measure: 0.044783206852172366
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 0
+Testing Disney_svd AUC:0.2613
+Testing AP: 0.03610332772544381
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Disney_svd AUC_measure:0.6299
+Normal Testing AP_measure: 0.07268318626412745
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Disney_svd AUC_measure:0.3573
+Abnormal Testing AP_measure: 0.0414224650820772
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Disney_svd AUC_measure:0.6257
+Mid Testing AP_measure: 0.07177409535503654
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0050 loss = 9.94363
+Val Traininig Facebook_svd AUC:0.8381
+Val Traininig AP: 0.10360623781676413
+Val Abnormal  Traininig Facebook_svd AUC measure:0.8762
+Val Abnormal Traininig AP measure: 0.15793650793650793
+Val Normal Traininig Facebook_svd AUC measure:0.1524
+Val Normal Traininig AP measure: 0.021225124479192066
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 50
+Testing Disney_svd AUC:0.7373
+Testing AP: 0.16487458883094558
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Disney_svd AUC_measure:0.6186
+Normal Testing AP_measure: 0.09999205556975135
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Disney_svd AUC_measure:0.4209
+Abnormal Testing AP_measure: 0.0589577783752514
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Disney_svd AUC_measure:0.6172
+Mid Testing AP_measure: 0.10032571734354903
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0100 loss = 9.15144
+Val Traininig Facebook_svd AUC:0.8635
+Val Traininig AP: 0.11748829086290385
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9714
+Val Abnormal Traininig AP measure: 0.75
+Val Normal Traininig Facebook_svd AUC measure:0.0508
+Val Normal Traininig AP measure: 0.019193492557978538
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 100
+Testing Disney_svd AUC:0.7401
+Testing AP: 0.15936571598336305
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Disney_svd AUC_measure:0.3771
+Normal Testing AP_measure: 0.05106203501012244
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Disney_svd AUC_measure:0.3983
+Abnormal Testing AP_measure: 0.04401157602311171
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Disney_svd AUC_measure:0.3517
+Mid Testing AP_measure: 0.04262786710598433
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0150 loss = 8.52450
+Val Traininig Facebook_svd AUC:0.8571
+Val Traininig AP: 0.11247575953458307
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9556
+Val Abnormal Traininig AP measure: 0.6180555555555556
+Val Normal Traininig Facebook_svd AUC measure:0.0508
+Val Normal Traininig AP measure: 0.01923165401426271
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 150
+Testing Disney_svd AUC:0.7486
+Testing AP: 0.21165136737425894
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Disney_svd AUC_measure:0.3941
+Normal Testing AP_measure: 0.06060506796140855
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Disney_svd AUC_measure:0.6808
+Abnormal Testing AP_measure: 0.11992023676806285
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Disney_svd AUC_measure:0.4167
+Mid Testing AP_measure: 0.06245744708574043
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0200 loss = 9.19086
+Val Traininig Facebook_svd AUC:0.8540
+Val Traininig AP: 0.11064425770308123
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9460
+Val Abnormal Traininig AP measure: 0.3625
+Val Normal Traininig Facebook_svd AUC measure:0.0476
+Val Normal Traininig AP measure: 0.019264822732604336
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 200
+Testing Disney_svd AUC:0.7514
+Testing AP: 0.23955586133088713
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Disney_svd AUC_measure:0.3757
+Normal Testing AP_measure: 0.04898600157654953
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Disney_svd AUC_measure:0.7542
+Abnormal Testing AP_measure: 0.16549344375431332
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Disney_svd AUC_measure:0.4011
+Mid Testing AP_measure: 0.05298907924785252
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0250 loss = 9.12859
+Val Traininig Facebook_svd AUC:0.8476
+Val Traininig AP: 0.10651629072681704
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9524
+Val Abnormal Traininig AP measure: 0.5625
+Val Normal Traininig Facebook_svd AUC measure:0.0603
+Val Normal Traininig AP measure: 0.019419054465783438
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 250
+Testing Disney_svd AUC:0.7528
+Testing AP: 0.2682354033231226
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Disney_svd AUC_measure:0.3305
+Normal Testing AP_measure: 0.040962857565649394
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Disney_svd AUC_measure:0.6667
+Abnormal Testing AP_measure: 0.10699561554999686
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Disney_svd AUC_measure:0.3305
+Mid Testing AP_measure: 0.04098363921954979
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 0300 loss = 8.22728
+Val Traininig Facebook_svd AUC:0.8413
+Val Traininig AP: 0.10317460317460317
+Val Abnormal  Traininig Facebook_svd AUC measure:0.9492
+Val Abnormal Traininig AP measure: 0.5291666666666667
+Val Normal Traininig Facebook_svd AUC measure:0.0317
+Val Normal Traininig AP measure: 0.018984993552198376
+<<<<<<<<<<<<<<<<<<<<<< Test begin>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch 300
+Testing Disney_svd AUC:0.7514
+Testing AP: 0.2687420432602988
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>
+Normal Testing Disney_svd AUC_measure:0.2669
+Normal Testing AP_measure: 0.03637566536273433
+<<<<<<<<<<<<<<<<<<<
+Abnormal Testing Disney_svd AUC_measure:0.6808
+Abnormal Testing AP_measure: 0.11017113514163082
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Mid Testing Disney_svd AUC_measure:0.2415
+Mid Testing AP_measure: 0.0352988503978603
+<<<<<<<<<<<<<<<<<<<<<< Test end >>>>>>>>>>>>>>>>>>>>>>>>>>>
+Training:   0%|          | 0/301 [00:45<?, ?it/s]

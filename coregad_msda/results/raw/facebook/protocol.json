@@ -1,0 +1,41 @@
+{
+  "status": "post-freeze external evaluation",
+  "primary_dataset": "Facebook_TAM",
+  "primary_reason": "current unmodified file distributed by official TAM repository",
+  "sensitivity_dataset": "Facebook_ConAD",
+  "dataset_files": {
+    "Facebook_TAM": "facebook_evaluation/data/Facebook.mat",
+    "Facebook_ConAD": "facebook_evaluation/data/fb_conad_full.mat"
+  },
+  "sha256": {
+    "Facebook_TAM": "606d8cce2f9a9d2829244f5691d1abf0c3a5e0f28a2ade25a7ca7df304184163",
+    "Facebook_ConAD": "d7041572dc1d08701984460d2d7498f1b436ab5b3207bb8d758aaf7b4f404904"
+  },
+  "frozen_core_variant": "directional_h1",
+  "calibration": "exact query-and-neighborhood-excluded midranks",
+  "aggregation": "reliability-weighted contextual/structural branch maximum",
+  "target_labels_used_for_scoring": false,
+  "target_specific_tuning": false,
+  "seeds": [
+    11,
+    23,
+    37,
+    53,
+    71
+  ],
+  "baselines": {
+    "NeighborDiv": "fixed equation-faithful reproduction; deterministic",
+    "FreeGAD": "official Cora preset transferred unchanged; deterministic",
+    "DOMINANT": {
+      "hidden_dim": 64,
+      "num_layers": 4,
+      "epochs": 20,
+      "learning_rate": 0.004,
+      "reconstruction_weight": 0.5
+    }
+  },
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "sklearn": "1.8.0"
+}

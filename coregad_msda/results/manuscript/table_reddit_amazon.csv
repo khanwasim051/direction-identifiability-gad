@@ -1,0 +1,13 @@
+method,dataset,auroc_mean,auroc_std,ap_mean,ap_std,runs,training,parameters,status
+NeighborDiv,Reddit,0.5108364546439852,0.0,0.0332817325879548,0.0,1,none,0.0,measured
+NeighborDiv,Amazon,0.5471890347051948,0.0,0.1089746606022688,0.0,1,none,0.0,measured
+FreeGAD,Reddit,0.5081073020656747,0.0,0.035778592757751,0.0,1,none,0.0,measured
+FreeGAD,Amazon,0.3701058084828135,0.0,0.069199167934858,0.0,1,none,0.0,measured
+DOMINANT,Reddit,0.5603105665500485,0.000814665469268,0.0373350102045806,3.7741788827387535e-05,5,20 epochs,20800.0,measured
+DOMINANT,Amazon,0.3892260404095735,0.0036855784067873,0.0711146399953998,0.0003242714224179,5,20 epochs,15769.0,measured
+AnomalyGFM (Facebook source),Reddit,0.4276884185736768,0.021158955971198,0.0264561555111974,0.0012208064623377,5,301 source epochs,484802.0,measured sparse refactor
+CoRe-GAD-MSDA (frozen),Reddit,0.5262789396704431,9.181686538652904e-05,0.0344789578824513,8.729927788999354e-06,5,none,0.0,measured
+ReFi-GAD,Reddit,,,,,0,source training + target support,,not zero-shot comparable: released inference samples 50 labeled nodes/class
+AnomalyGFM (Facebook source),Amazon,0.2001654260491965,0.0153553930806295,0.0557729765023584,0.000707811853983,5,301 source epochs,484802.0,measured sparse refactor
+CoRe-GAD-MSDA (frozen),Amazon,0.7375821404678732,0.0007406833792663,0.1878506074635612,0.0004522200979004,5,none,0.0,measured
+ReFi-GAD,Amazon,,,,,0,source training + target support,,not zero-shot comparable: released inference samples 50 labeled nodes/class

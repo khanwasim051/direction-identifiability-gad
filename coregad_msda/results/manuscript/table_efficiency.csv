@@ -1,0 +1,4 @@
+method,graph,representative_mechanism,seed,seconds,peak_rss_mib,trainable_parameters,training_required,epochs,nodes,finite_scores
+CoRe-GAD-MSDA,cora,cross_community_edges,11,1.3139127870,236.859375,0,false,0,2708,true
+CoRe-GAD-MSDA,citeseer,cross_community_edges,11,2.6572186040,527.4140625,0,false,0,3327,true
+CoRe-GAD-MSDA,pubmed,cross_community_edges,11,7.5515752630,447.71875,0,false,0,19717,true

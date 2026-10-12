@@ -1,0 +1,16 @@
+{
+  "status": "pass",
+  "checks": {
+    "development_is_24_runs_x_7_banks": true,
+    "source_evaluation_was_51_runs_x_2_banks": true,
+    "final_release_is_46_runs_x_2_banks_after_weibo_exclusion": true,
+    "directional_h1_frozen_before_evaluation": true,
+    "evaluation_variants_match_freeze": true,
+    "run_keys_unique": true,
+    "metrics_finite_and_bounded": true,
+    "previous_frozen_scores_reproduced_exactly": true,
+    "zero_trainable_parameters": true,
+    "target_labels_not_used_for_scoring": true
+  },
+  "release_note": "Ten Weibo metric rows were removed from the final public protocol after the source-run validation completed."
+}

@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the associated manuscript."
+title: "CoRe-GAD-MSDA: Exact Neighborhood-Excluded Calibration for Zero-Shot Graph Anomaly Detection"
+type: software
+authors:
+  - family-names: "REPLACE_WITH_FAMILY_NAME"
+    given-names: "REPLACE_WITH_GIVEN_NAME"
+version: "1.0.0"
+date-released: "YYYY-MM-DD"
+repository-code: "https://github.com/REPLACE_OWNER/REPLACE_REPOSITORY"
+license: "REPLACE_AFTER_LICENSE_SELECTION"

@@ -1,0 +1,56 @@
+{
+  "analysis_type": "post-freeze explanatory held-out evidence ablation",
+  "eligible_for_model_selection": false,
+  "frozen_selected_variant": "directional_h1",
+  "calibration": "unchanged exact query-and-neighborhood-excluded midranks",
+  "aggregation": "unchanged reliability-weighted contextual/structural branch maximum",
+  "variants": [
+    "original_twosided",
+    "directional_original",
+    "directional_h1",
+    "directional_h12",
+    "directional_h123",
+    "directional_h123_degree",
+    "twosided_h123_degree"
+  ],
+  "citation_internal_holdout": {
+    "datasets": [
+      "cora",
+      "citeseer"
+    ],
+    "seeds": [
+      53,
+      71
+    ],
+    "mechanisms": [
+      "cross_community_edges",
+      "degree_preserving_rewire",
+      "ego_edge_deletion",
+      "hub_star_injection"
+    ]
+  },
+  "citation_transfer": {
+    "datasets": [
+      "pubmed"
+    ],
+    "seeds": [
+      11,
+      23,
+      37,
+      53,
+      71
+    ],
+    "mechanisms": [
+      "cross_community_edges",
+      "degree_preserving_rewire",
+      "ego_edge_deletion",
+      "hub_star_injection"
+    ]
+  },
+  "organic_targets": [
+    "reddit",
+    "amazon"
+  ],
+  "excluded_target": "weibo",
+  "target_labels_used_for_scoring": false
+}

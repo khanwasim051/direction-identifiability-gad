@@ -1,0 +1,36 @@
+{
+  "method": "FreeGAD",
+  "implementation": "equation-faithful NumPy/SciPy reproduction of official code",
+  "official_commit": "c1b007d69174e22fcf9d7ff7fea0dcb88ebdf2a0",
+  "graphs": [
+    "cora",
+    "citeseer",
+    "pubmed"
+  ],
+  "mechanisms": [
+    "cross_community_edges",
+    "degree_preserving_rewire",
+    "ego_edge_deletion",
+    "hub_star_injection"
+  ],
+  "seeds": [
+    11,
+    23,
+    37,
+    53,
+    71
+  ],
+  "anomaly_fraction": 0.05,
+  "configuration_source": "official Cora preset transferred unchanged to all citation graphs",
+  "alpha": 0.010974988,
+  "beta": 0.205651231,
+  "num_hops": 7,
+  "num_anchors_per_pseudo_class": 70,
+  "features": "row-sum normalized for all citation graphs",
+  "topk_ties": "stable similarity ordering with node id as tie-breaker",
+  "target_labels": "loaded only after scores are constructed; evaluation only",
+  "target_specific_tuning": false,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0"
+}

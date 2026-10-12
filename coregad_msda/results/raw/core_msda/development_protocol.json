@@ -1,0 +1,45 @@
+{
+  "status": "evidence development; calibration and aggregation fixed",
+  "calibration": "exact query-and-neighborhood-excluded midranks",
+  "aggregation": "reliability-weighted contextual/structural branch maximum",
+  "development_graphs": [
+    "cora",
+    "citeseer"
+  ],
+  "development_seeds": [
+    11,
+    23,
+    37
+  ],
+  "mechanisms": [
+    "cross_community_edges",
+    "degree_preserving_rewire",
+    "ego_edge_deletion",
+    "hub_star_injection"
+  ],
+  "candidate_banks": [
+    "directional_original",
+    "directional_h1",
+    "directional_h12",
+    "directional_h123",
+    "directional_h123_degree",
+    "twosided_h123_degree"
+  ],
+  "nonselectable_reference": "original_twosided",
+  "tail_directions": {
+    "node_neighbor_discrepancy": "upper",
+    "neighbor_pair_mean": "upper",
+    "neighbor_pair_variance": "upper",
+    "closure": "lower",
+    "neighbor_degree": "two-sided",
+    "propagation_residual_h1": "upper",
+    "propagation_residual_h2": "upper",
+    "propagation_residual_h3": "upper",
+    "degree_context_residual": "upper",
+    "ego_triangle_load": "lower",
+    "unexpected_edge_tail": "upper",
+    "motif_incoherence": "upper"
+  },
+  "selection": "mean prevalence-adjusted AUROC/AP utility",
+  "evaluation_not_accessed_during_selection": true
+}

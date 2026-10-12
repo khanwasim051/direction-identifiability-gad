@@ -1,0 +1,28 @@
+{
+  "status": "frozen_before_evaluation_phase",
+  "selected_variant": "reliability_branch_max",
+  "selected_development_utility": 0.15354334877148348,
+  "selected_development_auroc": 0.6378615942572008,
+  "selected_development_ap": 0.07967271917836057,
+  "candidate_order": [
+    "reliability_branch_max",
+    "branch_cauchy_max",
+    "reliability_max",
+    "fixed_branch_max",
+    "weighted_cauchy",
+    "weighted_stouffer",
+    "reliability_mean",
+    "fixed_all_mean"
+  ],
+  "evaluation_variants": [
+    "reliability_branch_max",
+    "fixed_all_mean",
+    "fixed_branch_max",
+    "fixed_structural_mean"
+  ],
+  "evaluation_sets": {
+    "internal_holdout": "Cora and CiteSeer seeds 53 and 71, four mechanisms",
+    "citation_transfer": "PubMed seeds 11,23,37,53,71, four mechanisms",
+    "organic_labels": "Reddit and Amazon Fraud; five statistic-sampling seeds retained in the final release"
+  }
+}

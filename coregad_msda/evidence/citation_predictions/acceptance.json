@@ -1,0 +1,104 @@
+[
+  {
+    "graph": "cora",
+    "mechanism": "cross_community_edges",
+    "structural_above_random_and_prevalence": true,
+    "structural_improves_both_metrics_over_contextual": true,
+    "all_three_leave_one_out_aurocs_above_random": false
+  },
+  {
+    "graph": "cora",
+    "mechanism": "degree_preserving_rewire",
+    "structural_above_random_and_prevalence": true,
+    "structural_improves_both_metrics_over_contextual": false,
+    "all_three_leave_one_out_aurocs_above_random": false
+  },
+  {
+    "graph": "cora",
+    "mechanism": "ego_edge_deletion",
+    "structural_above_random_and_prevalence": false,
+    "structural_improves_both_metrics_over_contextual": true,
+    "all_three_leave_one_out_aurocs_above_random": false
+  },
+  {
+    "graph": "cora",
+    "mechanism": "hub_star_injection",
+    "structural_above_random_and_prevalence": true,
+    "structural_improves_both_metrics_over_contextual": true,
+    "all_three_leave_one_out_aurocs_above_random": false
+  },
+  {
+    "graph": "cora",
+    "mechanisms_above_random_and_prevalence": 3,
+    "mechanisms_improving_both_metrics": 3,
+    "passes_declared_three_of_four_improvement_rule": true
+  },
+  {
+    "graph": "citeseer",
+    "mechanism": "cross_community_edges",
+    "structural_above_random_and_prevalence": true,
+    "structural_improves_both_metrics_over_contextual": true,
+    "all_three_leave_one_out_aurocs_above_random": false
+  },
+  {
+    "graph": "citeseer",
+    "mechanism": "degree_preserving_rewire",
+    "structural_above_random_and_prevalence": true,
+    "structural_improves_both_metrics_over_contextual": true,
+    "all_three_leave_one_out_aurocs_above_random": false
+  },
+  {
+    "graph": "citeseer",
+    "mechanism": "ego_edge_deletion",
+    "structural_above_random_and_prevalence": false,
+    "structural_improves_both_metrics_over_contextual": true,
+    "all_three_leave_one_out_aurocs_above_random": false
+  },
+  {
+    "graph": "citeseer",
+    "mechanism": "hub_star_injection",
+    "structural_above_random_and_prevalence": true,
+    "structural_improves_both_metrics_over_contextual": true,
+    "all_three_leave_one_out_aurocs_above_random": false
+  },
+  {
+    "graph": "citeseer",
+    "mechanisms_above_random_and_prevalence": 3,
+    "mechanisms_improving_both_metrics": 4,
+    "passes_declared_three_of_four_improvement_rule": true
+  },
+  {
+    "graph": "pubmed",
+    "mechanism": "cross_community_edges",
+    "structural_above_random_and_prevalence": true,
+    "structural_improves_both_metrics_over_contextual": true,
+    "all_three_leave_one_out_aurocs_above_random": false
+  },
+  {
+    "graph": "pubmed",
+    "mechanism": "degree_preserving_rewire",
+    "structural_above_random_and_prevalence": true,
+    "structural_improves_both_metrics_over_contextual": false,
+    "all_three_leave_one_out_aurocs_above_random": false
+  },
+  {
+    "graph": "pubmed",
+    "mechanism": "ego_edge_deletion",
+    "structural_above_random_and_prevalence": true,
+    "structural_improves_both_metrics_over_contextual": true,
+    "all_three_leave_one_out_aurocs_above_random": false
+  },
+  {
+    "graph": "pubmed",
+    "mechanism": "hub_star_injection",
+    "structural_above_random_and_prevalence": true,
+    "structural_improves_both_metrics_over_contextual": true,
+    "all_three_leave_one_out_aurocs_above_random": false
+  },
+  {
+    "graph": "pubmed",
+    "mechanisms_above_random_and_prevalence": 4,
+    "mechanisms_improving_both_metrics": 3,
+    "passes_declared_three_of_four_improvement_rule": true
+  }
+]

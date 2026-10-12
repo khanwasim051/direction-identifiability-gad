@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "selected_variant": "reliability_branch_max",
+  "evaluation_metric_rows": 184,
+  "source_run_metric_rows": 204,
+  "citation_run_variant_rows": 144,
+  "organic_run_variant_rows": 40,
+  "excluded_weibo_rows": 20,
+  "target_labels_used_for_aggregation": false,
+  "trainable_parameters": 0,
+  "training_required": false,
+  "peak_rss_mib": 819.65234375,
+  "seconds_source_run_including_excluded_diagnostic": 168.16515946799973,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "sklearn": "1.8.0"
+}

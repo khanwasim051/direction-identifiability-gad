@@ -1,9 +1,9 @@
-# Which way is anomalous? Direction identifiability in training-free graph anomaly detection
+# Investigating the Role of Direction Identifiability of Relational Statistics in the Performance of Training-Free Graph Anomaly Detection
 
 Code, pre-registered protocols, and results for the paper
 
-> W. Khan, S. A. Waheed, S. R. Wakchaure, A. D. Patil, D. Varshney, V. Khan, A. S. More.
-> *Which way is anomalous? Direction identifiability in training-free graph anomaly detection.* Submitted to Data Mining and Knowledge Discovery.
+> W. Khan, S. A. Waheed, S. R. Wakchaure, A. D. Patil, D. Varshney, V. Khan.
+> *Investigating the Role of Direction Identifiability of Relational Statistics in the Performance of Training-Free Graph Anomaly Detection.* Submitted to Data Mining and Knowledge Discovery.
 
 Training-free graph anomaly detectors score nodes with relational statistics, and each statistic must be oriented: someone decides whether high or low values are anomalous. Using the nine-statistic detector **CoRe-GAD-MSDA** as an instrument, the paper shows that this direction decides performance, that it cannot be identified from unlabelled data, that labelled normal nodes do not recover it, and that a few labelled anomalies do.
 
@@ -24,7 +24,7 @@ Training-free graph anomaly detectors score nodes with relational statistics, an
 Python 3.11 or newer and `git` are required.
 
 ```bash
-git clone https://github.com/<your-account>/direction-identifiability-gad.git
+git clone https://github.com/khanwasim051/direction-identifiability-gad.git
 cd direction-identifiability-gad
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate

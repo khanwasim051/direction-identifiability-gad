@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code or results, please cite the paper."
-title: "Which way is anomalous? Direction identifiability in training-free graph anomaly detection"
+title: "Investigating the Role of Direction Identifiability of Relational Statistics in the Performance of Training-Free Graph Anomaly Detection"
 type: software
 authors:
   - family-names: Khan
@@ -15,8 +15,6 @@ authors:
     given-names: Deepti
   - family-names: Khan
     given-names: Vajid
-  - family-names: More
-    given-names: Anjali S.
 license: MIT
 version: "1.0.0"
 date-released: "2026-10-12"

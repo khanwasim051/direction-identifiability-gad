@@ -21,16 +21,14 @@
 
 \begin{document}
 
-\title[Which way is anomalous?]{Which way is anomalous? Direction identifiability in training-free graph anomaly detection}
+\title{Investigating the Role of Direction Identifiability of Relational Statistics in the Performance of Training-Free Graph Anomaly Detection}
 
-\author[1]{\fnm{Wasim} \sur{Khan}}
+\author*[1]{\fnm{Wasim} \sur{Khan}}\email{wasim.khan@sitpune.edu.in}
 \author[2]{\fnm{Shaikh Abdul} \sur{Waheed}}
 \author[3]{\fnm{Sujit R.} \sur{Wakchaure}}
 \author[4]{\fnm{Anjali Devi} \sur{Patil}}
 \author[5]{\fnm{Deepti} \sur{Varshney}}
 \author[6]{\fnm{Vajid} \sur{Khan}}
-\author*[1]{\fnm{Anjali S.} \sur{More}}\email{anjali.dalvi@sitpune.edu.in}
-%% TODO (authors): the corresponding e-mail does not match the listed name; correct before submission.
 
 \affil[1]{\orgname{Symbiosis Institute of Technology Pune, Symbiosis International (Deemed University)}, \city{Pune}, \country{India}}
 \affil[2]{\orgdiv{Department of Computer Science and Engineering}, \orgname{JSPM University}, \city{Pune}, \country{India}}
@@ -75,8 +73,7 @@ The contribution is empirical and methodological. We do not propose a new state-
 
 \section{CoRe-GAD-MSDA: the detector used as an instrument}\label{sec:detector}
 
-The detector studied here, CoRe-GAD-MSDA, was developed by the authors and has not been published elsewhere. %% TODO (authors): give the expansion of "CoRe" in the next sentence.
-MSDA stands for multi-statistic direction-aware evidence. Because no prior description exists, this section specifies it completely; Algorithm~\ref{alg:detector} (Appendix~\ref{app:algorithm}) summarises the procedure, and Fig.~\ref{fig:detector} gives an overview. We use it as an instrument because it makes the orientation decision explicit and lets us change that decision while holding everything else fixed.
+The detector studied here, CoRe-GAD-MSDA, was developed by the authors and has not been published elsewhere. Its name refers to its calibrated relational (CoRe) evidence and its multi-statistic direction-aware (MSDA) scoring. Because no prior description exists, this section specifies it completely; Algorithm~\ref{alg:detector} (Appendix~\ref{app:algorithm}) summarises the procedure, and Fig.~\ref{fig:detector} gives an overview. We use it as an instrument because it makes the orientation decision explicit and lets us change that decision while holding everything else fixed.
 
 \begin{figure}[!ht]
 \centering
@@ -381,11 +378,10 @@ Not applicable.
 \item \textbf{Competing interests:} The authors declare no competing interests.
 \item \textbf{Ethics approval and consent to participate:} Not applicable.
 \item \textbf{Data availability:} All datasets are public. Benchmark files were obtained from the repositories of ARC (\url{https://github.com/yixinliu233/ARC}), UNPrompt (\url{https://github.com/mala-lab/UNPrompt}), TAM (\url{https://github.com/mala-lab/TAM-master}), CARE-GNN (\url{https://github.com/YingtongDou/CARE-GNN}), PyGOD (\url{https://github.com/pygod-team/data}), and the Planetoid repository; checksums are listed in the code release.
-\item \textbf{Code availability:} Code, pre-registered protocols with their hashes, freeze records, per-node scores, and all result files are available at \url{https://github.com/REPLACE-WITH-REPOSITORY}. %% TODO (authors): create the public repository (ideally with a Zenodo DOI).
-\item \textbf{Use of large language models:} %% TODO (authors): review and edit this statement so that it accurately describes your use.
+\item \textbf{Code availability:} Code, pre-registered protocols with their hashes, freeze records, per-node scores, and all result files are available at \url{https://github.com/khanwasim051/direction-identifiability-gad}.
+\item \textbf{Use of large language models:}
 An AI assistant (Claude, Anthropic) was used to help implement the vectorised statistics and experiment scripts, run the reproduction and benchmark experiments, and draft and edit the manuscript. The authors designed the study, approved the pre-registered protocols, checked the results against the released code and result files, and take responsibility for the content.
-\item \textbf{Author contributions:} %% TODO (authors): update to reflect the revised study (CRediT taxonomy recommended).
-W.K.: implementation, experiments, analysis, writing. S.A.W.: conceptualisation, supervision, writing. S.R.W.: methodology, analysis, editing. A.D.P.: analysis, editing. D.V.: literature review, data organisation, figures. V.K.: data organisation, figures. A.S.M.: literature review, editing.
+\item \textbf{Author contributions:} W.K.: implementation, experiments, analysis, writing. S.A.W.: conceptualisation, supervision, writing. S.R.W.: methodology, analysis, editing. A.D.P.: analysis, editing. D.V.: literature review, data organisation, figures. V.K.: data organisation, figures.
 \end{itemize}
 
 \begin{appendices}

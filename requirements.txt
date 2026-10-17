@@ -1,12 +1,11 @@
-# Tested with Python 3.13 and the versions below (the original release used Python 3.12; see coregad_msda/requirements.txt).
+# Tested with Python 3.13 (Linux). The base detector and FDC need only numpy, scipy, scikit-learn and pandas.
 numpy>=2.0
 scipy>=1.13
 scikit-learn>=1.5
+pandas>=2.2
 matplotlib>=3.9
 threadpoolctl>=3.5
-# Only for baselines (DOMINANT, UNPrompt, AnomalyGFM). CoRe-GAD-MSDA itself needs only the packages above.
+# Official GDN baseline (CPU is sufficient)
 torch>=2.3
-torch-geometric>=2.5
-pygod>=1.1
 networkx>=3.0
-tqdm>=4.60
+# Official BWGNN needs DGL; it is run separately with bwgnn_package/ (see its requirements.txt).

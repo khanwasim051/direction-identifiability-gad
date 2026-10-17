@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,final_statistics_s,final_attribute_s,final_calibration_s,final_total_s,gdn_official_s
+PubMed,19717,46423,10,6.51,0.52,0.08,7.11,1.44

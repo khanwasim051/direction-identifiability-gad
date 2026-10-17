@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,final_statistics_s,final_attribute_s,final_calibration_s,final_total_s,gdn_official_s
+Facebook,1081,27552,10,0.65,0.02,0.007,0.68,0.32

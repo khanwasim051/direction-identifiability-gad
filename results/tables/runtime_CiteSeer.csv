@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,final_statistics_s,final_attribute_s,final_calibration_s,final_total_s,gdn_official_s
+CiteSeer,3327,5077,10,1.9,0.29,0.015,2.2,1.87

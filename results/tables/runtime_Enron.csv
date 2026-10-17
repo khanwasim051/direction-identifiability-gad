@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,final_statistics_s,final_attribute_s,final_calibration_s,final_total_s,gdn_official_s
+Enron,13533,176987,1,6.93,0.1,0.058,7.09,0.67

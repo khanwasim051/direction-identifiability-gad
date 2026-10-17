@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,final_statistics_s,final_attribute_s,final_calibration_s,final_total_s,gdn_official_s
+Amazon,10224,175608,10,4.03,0.1,0.046,4.18,0.54

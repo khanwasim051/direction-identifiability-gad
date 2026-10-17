@@ -1,0 +1,116 @@
+% ---------------------------------------------------------------------------
+% Theory section. Requires amsmath, amssymb, amsthm and the environments
+% theorem, lemma, proposition, corollary, remark (declared in the preamble).
+% Proofs are in theory_appendix.tex.
+% ---------------------------------------------------------------------------
+\section{When can the anomalous direction be identified?}\label{sec:theory}
+
+This section explains the empirical pattern of Sections~\ref{sec:rq3}--\ref{sec:rq5}: label-free rules fail, labelled normal nodes barely help, and a few labelled anomalies are enough. The results are stated for a single relational or attribute statistic on a fixed graph, so they hold without any distributional model of the graph. Proofs are given in Appendix~\ref{app:proofs}.
+
+\subsection{Setting}
+
+Let $G$ be a graph with node set $V$, $|V| = n$, and let $\mathcal{A} \subset V$ be the anomalous nodes, $|\mathcal{A}| = m$, with contamination $\pi = m/n$; $\mathcal{N} = V \setminus \mathcal{A}$ are the normal nodes. A statistic assigns a value $t_i$ to every node. Its \emph{graph-wide rank position} is
+\begin{equation}\label{eq:rankpos}
+U_i \;=\; \frac{1}{n}\sum_{l \in V}\Big(\mathbb{1}[t_l < t_i] + \tfrac12\,\mathbb{1}[t_l = t_i]\Big) \in (0,1),
+\end{equation}
+which equals $(r_i + 1)/2$ for the graph-wide signed midrank $r_i$ used by the detector. Write
+\begin{equation}
+\mu = \frac{1}{m}\sum_{i \in \mathcal{A}} U_i, \qquad
+\mathrm{AUC} = \frac{1}{m\,(n-m)}\sum_{i \in \mathcal{A}}\sum_{l \in \mathcal{N}}\Big(\mathbb{1}[t_l < t_i] + \tfrac12\,\mathbb{1}[t_l = t_i]\Big),
+\end{equation}
+so $\mathrm{AUC}$ is the AUROC obtained by scoring nodes with the upper tail of the statistic. The upper tail is the anomalous direction if $\mathrm{AUC} > \tfrac12$ and the lower tail if $\mathrm{AUC} < \tfrac12$.
+
+\begin{lemma}[Direction is the sign of the mean rank position]\label{lem:sign}
+$\mu - \tfrac12 = (1-\pi)\,(\mathrm{AUC} - \tfrac12)$. Hence the upper tail is anomalous if and only if $\mu > \tfrac12$, and the \emph{direction margin}
+\[ \Delta = |\mu - \tfrac12| = (1-\pi)\,|\mathrm{AUC} - \tfrac12| \]
+measures how strongly the statistic separates anomalies in its anomalous direction.
+\end{lemma}
+
+The lemma matters because $\mu$ can be estimated from labelled anomalies alone, using the whole unlabelled graph as reference: no labelled normal node is needed.
+
+\subsection{Unlabelled data do not identify the direction}
+
+A \emph{label-free rule} is any procedure, possibly randomised, whose output depends on the graph, its features and the statistics, but not on any label. All 16 rules of Section~\ref{sec:rq4} are of this kind.
+
+\begin{theorem}[Label-free non-identifiability]\label{thm:nonid}
+Let the statistic take distinct values and let $1 \le m < n/2$. Let $\mathcal{A}_{\uparrow}$ be the $m$ nodes with the largest values and $\mathcal{A}_{\downarrow}$ the $m$ nodes with the smallest. Labelling $\mathcal{A}_{\uparrow}$ as anomalous gives $\mathrm{AUC} = 1$; labelling $\mathcal{A}_{\downarrow}$ gives $\mathrm{AUC} = 0$. Both labellings have the same contamination and leave the input of every label-free rule unchanged, so every label-free rule chooses the wrong direction with probability at least $\tfrac12$ under one of them.
+\end{theorem}
+
+Theorem~\ref{thm:nonid} is elementary, but it fixes what a label-free rule can and cannot do. Skewness, consensus and similar rules succeed only when the unknown labelling mechanism happens to place anomalies in the tail the rule favours. That is an assumption about how anomalies arise, not something the data can confirm. The benchmarks contain both mechanisms: injected clique anomalies sit in the upper tail of triangle statistics, while organic camouflaged anomalies sit in the lower tail of neighbour disagreement (Section~\ref{sec:rq3}). This is why no fixed label-free rule transferred.
+
+\subsection{Labelled normal nodes are weak evidence}
+
+Labelled normal nodes add information, but very little when anomalies are rare. Suppose $m'$ normal nodes are drawn uniformly without replacement from $\mathcal{N}$ and revealed.
+
+\begin{theorem}[Normal shots]\label{thm:normal}
+In the setting of Theorem~\ref{thm:nonid}, assume $n \ge 2m + m'$. Every rule that uses the graph and $m'$ labelled normal nodes chooses the wrong direction, under one of the two labellings, with probability at least
+\[
+\tfrac12\,q, \qquad
+q = \prod_{i=0}^{m'-1}\frac{n-2m-i}{\,n-m-i\,} \;\ge\; \Big(1 - \frac{m}{\,n-m-m'+1\,}\Big)^{m'} \;\approx\; \exp\!\Big(-\frac{m'\pi}{1-\pi}\Big).
+\]
+\end{theorem}
+
+To push this worst-case error below $\varepsilon$, roughly $m' \ge \frac{1-\pi}{\pi}\ln\frac{1}{2\varepsilon}$ normal nodes are required. With $\pi = 0.05$ and $\varepsilon = 0.1$ this is about 31 labelled normal nodes for a single statistic. With the $m' = 10$ normal shots used by ARC and AnomalyGFM, the bound is between $0.15$ and $0.39$ on the 14 of the 16 development graphs with $\pi < 0.11$. This agrees with the near-chance direction recovery from normal shots reported in Section~\ref{sec:rq5}. The reason is an asymmetry: when anomalies are rare, normal nodes look like the graph as a whole, so they say little about which tail the few anomalies occupy.
+
+\subsection{A few labelled anomalies identify the direction}
+
+Now suppose $k$ anomalies are drawn uniformly without replacement from $\mathcal{A}$ and revealed. The calibration rule estimates $\mu$ by the mean rank position of the shots,
+\[
+\hat\mu = \frac1k \sum_{s=1}^{k} U_{a_s},
+\]
+and chooses the upper tail if $\hat\mu > \tfrac12$ and the lower tail otherwise. The mean of $\hat\mu$ is $\mu$, and each $U_{a_s}$ lies in $(0,1)$.
+
+\begin{theorem}[Anomaly shots]\label{thm:anomaly}
+Let $\Delta > 0$ be the direction margin of Lemma~\ref{lem:sign} and $\sigma^2 = \frac1m \sum_{i \in \mathcal{A}} (U_i - \mu)^2$ the spread of the anomalies' rank positions. The probability that the calibration rule chooses the wrong direction satisfies
+\[
+\Pr[\text{wrong direction}] \;\le\; \min\left\{ \exp\!\big(-2k\Delta^2\big),\;
+\exp\!\left(-\frac{k\Delta^2}{2\sigma^2 + 2\Delta/3}\right)\right\}.
+\]
+\end{theorem}
+
+\begin{corollary}[How many anomalies to label]\label{cor:k}
+If $J$ statistics all have margin at least $\Delta_{\min}$, all their directions are correct with probability at least $1-\varepsilon$ once
+\[
+k \;\ge\; \frac{\ln(J/\varepsilon)}{2\,\Delta_{\min}^{2}}.
+\]
+\end{corollary}
+
+The contrast with Theorem~\ref{thm:normal} is sharp. In the two extreme labellings of Theorem~\ref{thm:nonid}, a single labelled anomaly reveals the direction exactly, while $m'$ normal nodes leave it undetermined with probability close to $\exp(-m'\pi/(1-\pi))$. In general the error with anomaly shots decays exponentially in $k$ at a rate set by $\Delta$, which depends on the contamination only through the factor $1-\pi$. With labelled normal nodes, the worst-case rate is throttled by $\pi$ itself.
+
+\subsection{Choosing which statistics to trust}
+
+With few shots, some statistics look separating by chance. The method therefore weights statistic $j$ by $w_j = \max(0,\ \hat s_j - \tau_k)$. Here $\hat s_j$ is the estimated separation of its chosen tail and $\tau_k = 1/\sqrt{12k}$.
+
+\begin{proposition}[Null calibration of $\tau_k$]\label{prop:tau}
+If the $k$ shots are a uniform random sample of nodes with respect to statistic $j$ (no anomaly signal), then for each of the upper, lower and two-sided evidences, the shot mean has expectation $\tfrac12 + O(1/n)$ and standard deviation at most $1/\sqrt{12k} = \tau_k$. If instead statistic $j$ has margin $\Delta_j > \tau_k$, it keeps a positive weight with probability at least $1 - \exp\!\big(-2k(\Delta_j - \tau_k)^2\big)$.
+\end{proposition}
+
+Thus $\tau_k$ is one null standard deviation: statistics whose apparent separation is within the noise level of $k$ shots are switched off. Statistics with a real margin above that level are retained with probability approaching one exponentially fast. The same calculation explains the $k$-gate of the final method. At $k = 1$ and $k = 2$, $\tau_k \ge 0.20$, and with $k = 1$ a statistic without any signal still passes this threshold with probability at least $0.42$. Among the $2p$ attribute statistics, many would therefore be retained by chance, so they are used only from $k = 3$ onwards.
+
+\subsection{Empirical check}
+
+Table~\ref{tab:bound} compares the observed direction error of the calibration rule with Theorem~\ref{thm:anomaly}, using the exact $\Delta$ and $\sigma^2$ of each statistic computed from all labels. It pools 9 relational statistics, 16 development graphs and 5 seeds. The observed error never exceeds either bound. Both bounds are conservative: for margins above $0.2$, no error was observed at $k = 10$, while Hoeffding's bound allows $35\%$ and Bernstein's $16\%$. The variance-adaptive Bernstein bound is the tighter of the two throughout. Statistics with margin below $0.05$ are close to a coin flip at every $k$, as the theory predicts; the weight threshold of Proposition~\ref{prop:tau} is designed to discard exactly these.
+
+\begin{table}[t]
+\caption{Observed direction error of the anomaly-shot calibration rule against the bounds of Theorem~\ref{thm:anomaly}. Rows pool statistics by their margin $\Delta$; $n$ is the number of (statistic, graph, seed) cases. Development graphs only.}\label{tab:bound}
+\centering\small
+\begin{tabular}{@{}cl rrrr@{}}
+\toprule
+$k$ & $\Delta$ & $n$ & Observed & Hoeffding & Bernstein \\
+\midrule
+1  & $(0.00, 0.05]$ & 172 & 0.494 & 0.999 & 0.997 \\
+   & $(0.10, 0.20]$ & 155 & 0.361 & 0.956 & 0.915 \\
+   & $(0.30, 0.50]$ &  99 & 0.030 & 0.760 & 0.630 \\
+3  & $(0.00, 0.05]$ & 182 & 0.467 & 0.996 & 0.989 \\
+   & $(0.10, 0.20]$ & 158 & 0.152 & 0.876 & 0.770 \\
+   & $(0.30, 0.50]$ & 104 & 0.019 & 0.444 & 0.258 \\
+5  & $(0.00, 0.05]$ & 178 & 0.421 & 0.994 & 0.982 \\
+   & $(0.10, 0.20]$ & 138 & 0.188 & 0.795 & 0.647 \\
+   & $(0.30, 0.50]$ & 100 & 0.000 & 0.259 & 0.108 \\
+10 & $(0.00, 0.05]$ & 178 & 0.478 & 0.987 & 0.965 \\
+   & $(0.10, 0.20]$ & 139 & 0.072 & 0.639 & 0.429 \\
+   & $(0.20, 0.30]$ & 121 & 0.000 & 0.351 & 0.163 \\
+   & $(0.30, 0.50]$ & 100 & 0.000 & 0.073 & 0.015 \\
+\bottomrule
+\end{tabular}
+\end{table}

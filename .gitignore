@@ -2,6 +2,9 @@
 data/*
 !data/download_data.py
 work/
+bwgnn_package/data/
+bwgnn_package/results/
+bwgnn_package/BWGNN.py
 coregad_msda/condcal_cora/data/
 coregad_msda/condcal_amazon/data/
 coregad_msda/facebook_evaluation/data/
@@ -9,6 +12,7 @@ coregad_msda/facebook_evaluation/data/
 __pycache__/
 *.pyc
 .venv/
+*.part
 paper/latex/*.aux
 paper/latex/*.log
 paper/latex/*.out
@@ -17,3 +21,4 @@ paper/latex/*.blg
 paper/latex/*.fls
 paper/latex/*.fdb_latexmk
 paper/latex/*.synctex.gz
+paper/latex/main.pdf

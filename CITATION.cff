@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code or results, please cite the paper."
-title: "Investigating the Role of Direction Identifiability of Relational Statistics in the Performance of Training-Free Graph Anomaly Detection"
+title: "Few-Shot Direction Calibration of Relational and Attribute Statistics for Training-Free Graph Anomaly Detection"
 type: software
 authors:
   - family-names: Khan
@@ -16,5 +16,6 @@ authors:
   - family-names: Khan
     given-names: Vajid
 license: MIT
-version: "1.0.0"
-date-released: "2026-10-12"
+version: "2.0.0"
+date-released: "2026-10-17"
+repository-code: "https://github.com/khanwasim051/direction-identifiability-gad"

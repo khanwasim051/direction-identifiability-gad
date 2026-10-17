@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,final_statistics_s,final_attribute_s,final_calibration_s,final_total_s,gdn_official_s
+Cora,2708,5802,10,1.5,0.15,0.014,1.66,10.77

@@ -1,0 +1,16 @@
+{
+ "C1": true,
+ "C2": true,
+ "wins": 13,
+ "cells": 13,
+ "C3": true,
+ "mean_auroc": {
+  "BWGNN": 0.4913,
+  "BWGNN+val": 0.5584,
+  "FINAL": 0.7227,
+  "GDN": 0.5249,
+  "GDN+val": 0.6305,
+  "V0": 0.6809
+ },
+ "mean_best_baseline": 0.5462
+}

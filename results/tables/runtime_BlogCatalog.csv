@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,final_statistics_s,final_attribute_s,final_calibration_s,final_total_s,gdn_official_s
+BlogCatalog,5196,172779,10,31.97,0.87,0.031,32.87,17.17

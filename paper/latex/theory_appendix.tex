@@ -1,0 +1,47 @@
+% ---------------------------------------------------------------------------
+% Appendix: proofs for Section \ref{sec:theory}
+% ---------------------------------------------------------------------------
+\section{Proofs}\label{app:proofs}
+
+Throughout, $c(i,l) = \mathbb{1}[t_l < t_i] + \tfrac12\mathbb{1}[t_l = t_i]$, so that $c(i,l) + c(l,i) = 1$ and $c(i,i) = \tfrac12$.
+
+\begin{proof}[Proof of Lemma~\ref{lem:sign}]
+By \eqref{eq:rankpos}, $U_i = \frac1n\sum_{l\in V} c(i,l)$. Splitting the inner sum into anomalies and normal nodes,
+\[
+m\,\mu = \sum_{i\in\mathcal{A}} U_i
+= \frac1n\Big(\sum_{i\in\mathcal{A}}\sum_{l\in\mathcal{A}} c(i,l) + \sum_{i\in\mathcal{A}}\sum_{l\in\mathcal{N}} c(i,l)\Big)
+= \frac1n\Big(\frac{m^2}{2} + m(n-m)\,\mathrm{AUC}\Big),
+\]
+because the $m^2$ ordered pairs within $\mathcal{A}$ split into pairs $(i,l),(l,i)$ contributing $1$ each and diagonal terms contributing $\tfrac12$ each, for a total of $m^2/2$. Dividing by $m$ gives $\mu = \pi/2 + (1-\pi)\,\mathrm{AUC}$, that is, $\mu - \tfrac12 = (1-\pi)(\mathrm{AUC} - \tfrac12)$. Since $1 - \pi > 0$, $\mu - \tfrac12$ and $\mathrm{AUC} - \tfrac12$ have the same sign.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:nonid}]
+With distinct values, every node in $\mathcal{A}_\uparrow$ has a larger value than every node outside it, so labelling $\mathcal{A}_\uparrow$ as anomalous gives $\mathrm{AUC} = 1$; symmetrically, labelling $\mathcal{A}_\downarrow$ gives $\mathrm{AUC} = 0$. Both labellings have $m$ anomalies. A label-free rule $\phi$ sees the same input under both, so $p = \Pr[\phi = \text{upper}]$ is the same. Its error is $1 - p$ under the first labelling and $p$ under the second, and $\max(1-p,\,p) \ge \tfrac12$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:normal}]
+Let $M = V \setminus (\mathcal{A}_\uparrow \cup \mathcal{A}_\downarrow)$, $|M| = n - 2m \ge m'$. Under the first labelling the normal nodes are $M \cup \mathcal{A}_\downarrow$; under the second they are $M \cup \mathcal{A}_\uparrow$. Both sets have $n - m$ elements. Let $S$ be the set of $m'$ revealed normal nodes and $E$ the event $S \subseteq M$. Under either labelling,
+\[
+\Pr[E] = \binom{n-2m}{m'}\Big/\binom{n-m}{m'} = \prod_{i=0}^{m'-1}\frac{n-2m-i}{n-m-i} = q,
+\]
+and conditionally on $E$, $S$ is a uniform $m'$-subset of $M$ under both labellings. Hence, on $E$, the observed data $(G, S)$ have the same distribution under both labellings, and so does the output of any rule $\phi$. Write $p_E = \Pr[\phi = \text{upper} \mid E]$. Then
+\[
+\Pr_{\uparrow}[\text{error}] + \Pr_{\downarrow}[\text{error}]
+\;\ge\; q\,(1 - p_E) + q\,p_E \;=\; q,
+\]
+so the larger of the two errors is at least $q/2$. Each factor of the product is at least its last factor, which gives $q \ge \big((n-2m-m'+1)/(n-m-m'+1)\big)^{m'} = \big(1 - m/(n-m-m'+1)\big)^{m'}$. For $m' \ll n$ this is approximately $\big(1-\pi/(1-\pi)\big)^{m'} \approx \exp(-m'\pi/(1-\pi))$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:anomaly}]
+Assume the upper tail is anomalous, so $\mu = \tfrac12 + \Delta$; the other case is symmetric. The rule errs only if $\hat\mu \le \tfrac12$, that is, if $\hat\mu - \mu \le -\Delta$. The shots are drawn without replacement from the finite population $\{U_i : i \in \mathcal{A}\}$, whose values lie in $(0,1)$ and have mean $\mu$ and variance $\sigma^2$. \citet{hoeffding1963probability}, Theorem~4, shows that for every continuous convex function $f$, $\mathbb{E} f(\sum_s U_{a_s})$ under sampling without replacement is at most its value under sampling with replacement. Every exponential-moment (Chernoff) bound for independent draws therefore also holds here. Hoeffding's inequality for independent variables with range $1$ gives $\Pr[\hat\mu - \mu \le -\Delta] \le \exp(-2k\Delta^2)$. Bernstein's inequality, with variance $\sigma^2$ and $|U_{a_s} - \mu| \le 1$, gives $\Pr[\hat\mu - \mu \le -\Delta] \le \exp\!\big(-k\Delta^2 / (2\sigma^2 + 2\Delta/3)\big)$. Both are derived from exponential moments, so both apply.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:k}]
+By Theorem~\ref{thm:anomaly} and a union bound over the $J$ statistics, the probability that at least one direction is wrong is at most $J\exp(-2k\Delta_{\min}^2)$. This is at most $\varepsilon$ when $k \ge \ln(J/\varepsilon)/(2\Delta_{\min}^2)$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:tau}]
+With distinct values, the rank positions are $\{(i-\tfrac12)/n : i = 1,\dots,n\}$, with mean exactly $\tfrac12$ and variance $(n^2-1)/(12n^2) < 1/12$. The upper evidence is $U$ and the lower evidence $1-U$, so both have this mean and variance. The two-sided evidence is $|r| = |2U - 1|$. It has mean $\tfrac12$ for even $n$ (and $\tfrac12 - 1/(2n^2)$ for odd $n$), and its second moment equals that of $r$, namely $(n^2-1)/(3n^2)$, so its variance is at most $1/12$. Ties only reduce these variances. If the $k$ shots are a uniform random sample of nodes, the shot mean of each evidence therefore has expectation $\tfrac12 + O(1/n)$ and variance at most $1/(12k)$. This holds with replacement; sampling without replacement multiplies the variance by the finite-population factor $(n-k)/(n-1) \le 1$. Hence its standard deviation is at most $\tau_k = 1/\sqrt{12k}$.
+
+For the second claim, let statistic $j$ have margin $\Delta_j > \tau_k$, and say its upper tail is anomalous. The estimated separation of the chosen tail is at least that of the upper tail, $\hat s_j \ge \hat\mu - \tfrac12$. The weight is zero only if $\hat s_j \le \tau_k$, which implies $\hat\mu - \mu \le -(\Delta_j - \tau_k)$. By the Hoeffding step in the proof of Theorem~\ref{thm:anomaly}, this has probability at most $\exp(-2k(\Delta_j - \tau_k)^2)$.
+\end{proof}

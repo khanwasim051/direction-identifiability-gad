@@ -1,8 +1,12 @@
-import sys as _sys
-from pathlib import Path as _Path
-_sys.path.insert(0, str(_Path(__file__).resolve().parents[1]))
-from paths import DATA, WORK, PKG, BENCH, STUDY, PAPER, RES_BENCH, RES_STUDY, RES_PAPER  # noqa: E402
-import re
-s = open(PAPER / "latex" / "main_src.tex").read()
-s = re.sub(r"\\input\{(gen/[^}]+)\}", lambda m: open(PAPER / "latex" / m.group(1)).read().strip(), s)
-open(PAPER / "latex" / "main.tex", "w").write(s)
+r"""Inlines every \input{...} of main_src.tex into a single main.tex (journals require one file; \input inside
+tabular environments is also fragile)."""
+import re, os
+os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), "latex"))
+def inline(path):
+    txt = open(path).read()
+    def rep(m):
+        f = m.group(1); f = f if f.endswith(".tex") else f + ".tex"
+        return inline(f).rstrip("\n")
+    return re.sub(r"\\input\{([^}]+)\}", rep, txt)
+open("main.tex", "w").write(inline("main_src.tex"))
+print("main.tex written")

@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,final_statistics_s,final_attribute_s,final_calibration_s,final_total_s,gdn_official_s
+Reddit,10984,78516,10,5.04,0.09,0.039,5.18,0.55

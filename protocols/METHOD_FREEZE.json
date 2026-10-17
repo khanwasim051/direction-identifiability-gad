@@ -1,0 +1,15 @@
+{
+ "frozen_method": "W1_kgated (step3.final_scores): k>=3 -> V2 (relational+attribute statistics, shot-calibrated directions, weights max(0,s_j-1/sqrt(12k))); k<3 -> M2_DIR-W",
+ "frozen_at_utc": "2026-10-17T05:40:46",
+ "T2_labels_read": false,
+ "sha256": {
+  "fsdc.py": "331f9fd6bded80599a4b0e82b0acb97efaeba6f8e2006de79871aefdc5151c1d",
+  "step2.py": "8f97453b3237210fd211302796f011eca6fcc05d38026fb35a1720daf3aa1cd1",
+  "step3.py": "ae30f4f815b112dfc9cb30c1c2d400b44cb98b5cd6c0ff08e315e7372c4007e5",
+  "FEASIBILITY_PROTOCOL.md": "5b71e1d64bd59095b4605526c57c0bca952f7d7721c07e8d3a6c8df2ee648528",
+  "BASELINES2_PROTOCOL.md": "d548b49fbc668f701863463e05070c483ccb01238a3592276f7f35ee51a4ac27",
+  "STEP2_PROTOCOL.md": "59bad00040df7c4748b001542802006445e94fadd47c0dd50a95dae77cc896c7",
+  "STEP3_PROTOCOL.md": "6a8f5c5455e2fd326c4b0f103dea1c7fe743afc5da249efbe1316d9a3f1becac",
+  "/home/claude/exp/code/CoRe-GAD-MSDA-Reproducibility/core_multiscale_directional/run_experiment.py": "72861c26a0317820c83349681c80f91503fb43b292ef4c55b484f2cb4285da86"
+ }
+}

@@ -19,7 +19,7 @@ The previous version of this repository (the empirical analysis paper on directi
 | `fdc/` | FDC and all experiment scripts (development rounds, official GDN, confirmatory test, tables, runtime) |
 | `bwgnn_package/` | Self-contained runner for the official BWGNN (needs DGL; was run on Windows) |
 | `protocols/` | All protocols with SHA-256 hashes, the method freeze record, and the frozen method files |
-| `results/` | Every per-run result used in the paper |
+| `results/` | Every per-run result used in the paper (`results/revision/`: analyses added in the revision) |
 | `paper/` | Script that generates every table and figure, and the LaTeX source |
 | `data/` | `download_data.py` only; datasets are downloaded, not redistributed |
 | `paths.py` | Paths (`GAD_DATA` and `GAD_WORK` override the data and work folders) |
@@ -68,9 +68,19 @@ python fdc/confirm.py                            # refuses to run if any frozen 
 python fdc/run_gdn_official.py --heldout Books Enron Photo CS
 #   bwgnn_package/run_bwgnn.py heldout
 
-# summary tables, significance tests, bound check, runtime
+# summary tables, bound check, runtime
 python fdc/tables.py
 python fdc/runtime.py Cora CiteSeer ...
+
+# revision analyses (frozen method unchanged): 15 extra seeds, lightweight baselines, nAP and R-precision,
+# null experiment with random shots, sensitivity to c / k-gate / p / (q, L), official GDN with 20 seeds,
+# graph-level significance with hierarchical bootstrap
+python fdc/rev_extra_seeds.py Cora CiteSeer ...      # statistics for seeds 101-115
+python fdc/rev_eval.py Cora CiteSeer ...             # all 20 graphs
+python fdc/rev_qL.py Amazon BlogCatalog CiteSeer Cora Tolokers Weibo-ARC YelpChi
+python fdc/rev_gdn20.py Cora CiteSeer ...            # all 20 graphs
+python fdc/rev_graph_level.py
+python paper/make_graphlevel_table.py && python paper/make_revision_tables.py
 
 # tables, figure and manuscript
 python paper/make_kais.py && python paper/build.py
@@ -119,7 +129,10 @@ diff protocols/frozen/step3.py fdc/step3.py
 |---|---|
 | Development results by *k*, per-graph table, Fig. 3 | `results/rounds23/step3.csv`, `results/official_dev/`, `results/tables/per_cell_mean_std.csv` |
 | Confirmatory test | `results/heldout/`, `results/heldout/confirmatory_summary.json` |
-| Wilcoxon tests | `results/tables/wilcoxon.csv` |
+| Graph-level significance (Table 7) | `results/revision/graph_level.csv`, `results/revision/graph_level_per_graph.csv` |
+| Lightweight baselines, 20 seeds, nAP and R-precision (Tables 9, 10) | `results/revision/eval_*.csv`, `results/revision/gdn20_*.csv` |
+| Null experiment (Table 11) | `results/revision/null_*.csv` |
+| Sensitivity to c, k-gate, p (Table 12) and (q, L) (Table 13) | `results/revision/eval_*.csv`, `results/revision/qL_*.csv` |
 | Ablation and development history | `results/round1/ours.csv`, `results/rounds23/step2.csv`, `results/rounds23/step3.csv` |
 | Bound check (theory section) | `results/tables/bound_check.csv` |
 | Runtime | `results/tables/runtime.csv` |

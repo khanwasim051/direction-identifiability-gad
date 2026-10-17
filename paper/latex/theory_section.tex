@@ -33,10 +33,14 @@ The lemma matters because $\mu$ can be estimated from labelled anomalies alone, 
 A \emph{label-free rule} is any procedure, possibly randomised, whose output depends on the graph, its features and the statistics, but not on any label. All 16 rules of Section~\ref{sec:rq4} are of this kind.
 
 \begin{theorem}[Label-free non-identifiability]\label{thm:nonid}
-Let the statistic take distinct values and let $1 \le m < n/2$. Let $\mathcal{A}_{\uparrow}$ be the $m$ nodes with the largest values and $\mathcal{A}_{\downarrow}$ the $m$ nodes with the smallest. Labelling $\mathcal{A}_{\uparrow}$ as anomalous gives $\mathrm{AUC} = 1$; labelling $\mathcal{A}_{\downarrow}$ gives $\mathrm{AUC} = 0$. Both labellings have the same contamination and leave the input of every label-free rule unchanged, so every label-free rule chooses the wrong direction with probability at least $\tfrac12$ under one of them.
+Let the statistic take distinct values and let $1 \le m < n/2$. Let $\mathcal{A}_{\uparrow}$ be the $m$ nodes with the largest values and $\mathcal{A}_{\downarrow}$ the $m$ nodes with the smallest. Labelling $\mathcal{A}_{\uparrow}$ as anomalous gives $\mathrm{AUC} = 1$; labelling $\mathcal{A}_{\downarrow}$ gives $\mathrm{AUC} = 0$. Both labellings have the same contamination and leave the input of every label-free rule unchanged, so every label-free rule chooses the wrong signed direction (upper or lower) with probability at least $\tfrac12$ under one of them.
 \end{theorem}
 
 Theorem~\ref{thm:nonid} is elementary, but it fixes what a label-free rule can and cannot do. Skewness, consensus and similar rules succeed only when the unknown labelling mechanism happens to place anomalies in the tail the rule favours. That is an assumption about how anomalies arise, not something the data can confirm. The benchmarks contain both mechanisms: injected clique anomalies sit in the upper tail of triangle statistics, while organic camouflaged anomalies sit in the lower tail of neighbour disagreement (Section~\ref{sec:rq3}). This is why no fixed label-free rule transferred.
+
+\begin{remark}[Scope of Theorem~\ref{thm:nonid}]\label{rem:scope}
+The theorem concerns the \emph{signed} direction. It does not say that unlabelled data are useless for detection: two-sided evidence $|r|$ needs no labels and scores both tails. Its cost is that half of its evidence lies in the tail that contains no anomalies, so it ranks the anomalies below every extreme normal node in the other tail. In the earlier study the all-two-sided rule was a reasonable label-free default (mean AUROC 0.66--0.68 across the three splits) but was beaten by correctly signed statistics wherever the direction was stable. FDC therefore keeps the two-sided option and lets the labelled anomalies choose among the three.
+\end{remark}
 
 \subsection{Labelled normal nodes are weak evidence}
 
@@ -68,6 +72,12 @@ Let $\Delta > 0$ be the direction margin of Lemma~\ref{lem:sign} and $\sigma^2 =
 \]
 \end{theorem}
 
+Theorem~\ref{thm:anomaly} covers the choice between the two signed directions. FDC chooses among three candidates, the two signed tails and the two-sided evidence, by the largest shot mean. The same argument applies to this three-way choice.
+
+\begin{corollary}[Three-way selection]\label{cor:three}
+Let $\mu^{\uparrow}, \mu^{\downarrow}, \mu^{\leftrightarrow}$ be the mean upper, lower and two-sided evidence of the anomalies, let $t^{*}$ be the candidate with the largest mean, and let $g_t = \mu^{t^*} - \mu^{t} > 0$ be its gap to each other candidate $t$. The probability that the largest shot mean belongs to a candidate other than $t^*$ is at most $\sum_{t \ne t^*} \exp(-k g_t^2/2)$. For the two signed tails $g = 2\Delta$, which recovers the Hoeffding term of Theorem~\ref{thm:anomaly}.
+\end{corollary}
+
 \begin{corollary}[How many anomalies to label]\label{cor:k}
 If $J$ statistics all have margin at least $\Delta_{\min}$, all their directions are correct with probability at least $1-\varepsilon$ once
 \[
@@ -81,11 +91,16 @@ The contrast with Theorem~\ref{thm:normal} is sharp. In the two extreme labellin
 
 With few shots, some statistics look separating by chance. The method therefore weights statistic $j$ by $w_j = \max(0,\ \hat s_j - \tau_k)$. Here $\hat s_j$ is the estimated separation of its chosen tail and $\tau_k = 1/\sqrt{12k}$.
 
-\begin{proposition}[Null calibration of $\tau_k$]\label{prop:tau}
-If the $k$ shots are a uniform random sample of nodes with respect to statistic $j$ (no anomaly signal), then for each of the upper, lower and two-sided evidences, the shot mean has expectation $\tfrac12 + O(1/n)$ and standard deviation at most $1/\sqrt{12k} = \tau_k$. If instead statistic $j$ has margin $\Delta_j > \tau_k$, it keeps a positive weight with probability at least $1 - \exp\!\big(-2k(\Delta_j - \tau_k)^2\big)$.
+\begin{proposition}[Null behaviour of the evidence]\label{prop:tau}
+Suppose the $k$ shots are a uniform random sample of nodes with respect to statistic $j$ (no anomaly signal).
+\begin{enumerate}
+\item[(a)] For the upper and lower evidence, with or without ties, the shot mean has expectation exactly $\tfrac12$ and standard deviation at most $1/\sqrt{12k} = \tau_k$.
+\item[(b)] For the two-sided evidence, the shot mean has expectation $m_j = \frac1n\sum_i |\bar r_{ij}| \le \tfrac12$, with equality up to $O(1/n^2)$ when the values are distinct, and variance $\sigma_{j}^2/k$, where $\sigma_j^2 = \frac1n\sum_i(|\bar r_{ij}| - m_j)^2 \le \tfrac14$. With ties, $m_j$ can be well below $\tfrac12$ and $\sigma_j^2$ can exceed $\tfrac1{12}$.
+\item[(c)] If instead statistic $j$ has margin $\Delta_j > \tau_k$, it keeps a positive weight with probability at least $1 - \exp\!\big(-2k(\Delta_j - \tau_k)^2\big)$.
+\end{enumerate}
 \end{proposition}
 
-Thus $\tau_k$ is one null standard deviation: statistics whose apparent separation is within the noise level of $k$ shots are switched off. Statistics with a real margin above that level are retained with probability approaching one exponentially fast. The same calculation explains the $k$-gate of the final method. At $k = 1$ and $k = 2$, $\tau_k \ge 0.20$, and with $k = 1$ a statistic without any signal still passes this threshold with probability at least $0.42$. Among the $2p$ attribute statistics, many would therefore be retained by chance, so they are used only from $k = 3$ onwards.
+For the signed evidence, $\tau_k$ is therefore an upper bound on one null standard deviation of the shot mean, and statistics whose apparent separation lies within it are switched off. For the two-sided evidence the method centres at $\tfrac12 \ge m_j$, which makes retention harder when ties lower $m_j$, but the null spread can exceed $\tau_k$. On our graphs this matters little: across the 143 non-empty statistic--graph pairs of the development set, $\sigma_j^2 \le 0.0843$, at most $1.2\%$ above $\tfrac1{12}$, while heavily tied statistics have $m_j$ as low as $0.28$ (and $0$ for the few statistics that are constant on a graph). The threshold is a per-statistic noise floor, not a guarantee on the number of statistics retained by chance across all $9+2p$ statistics and three candidate directions; Section~\ref{sec:null} measures that number directly with random shots. Finally, the proposition explains why few shots call for caution with many statistics (for $k=1$, a signed statistic with distinct values and no signal passes the threshold with probability $0.42$), but it does not single out $k = 3$ as the point at which to add attribute statistics. That gate was chosen in the last development round (Section~\ref{sec:setup}); Section~\ref{sec:sens} reports the alternatives.
 
 \subsection{Empirical check}
 

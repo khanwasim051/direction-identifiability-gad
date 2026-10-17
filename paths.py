@@ -14,5 +14,5 @@ OFFICIAL = WORK / "official"                                     # official GDN 
 RES = REPO / "results"
 RES_R1, RES_DEV, RES_R23, RES_HO, RES_TAB = (RES / "round1", RES / "official_dev", RES / "rounds23",
                                              RES / "heldout", RES / "tables")
-for _p in (WORK, CACHE, SEALED, OFFICIAL, RES_R1, RES_DEV, RES_DEV / "bwgnn", RES_R23, RES_HO, RES_HO / "bwgnn", RES_TAB):
+for _p in (WORK, CACHE, SEALED, OFFICIAL, RES / "revision", RES_R1, RES_DEV, RES_DEV / "bwgnn", RES_R23, RES_HO, RES_HO / "bwgnn", RES_TAB):
     _p.mkdir(parents=True, exist_ok=True)

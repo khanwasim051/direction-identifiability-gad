@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+Photo,7650,120653,10,0.05558148599999413,4.644171309000001,0.2896571750000021,4.933828484000003,0.026397900000006302,1.2012423369999965

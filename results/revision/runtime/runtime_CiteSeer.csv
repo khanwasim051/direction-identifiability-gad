@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+CiteSeer,3327,5077,10,0.06936548200002335,1.5228446219999796,0.21022188000000597,1.7330665019999856,0.013731656000004477,1.0334166839999739

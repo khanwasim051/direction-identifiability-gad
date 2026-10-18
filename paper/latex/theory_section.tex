@@ -107,25 +107,35 @@ For the signed evidence, $\tau_k$ is therefore an upper bound on one null standa
 Table~\ref{tab:bound} compares the observed direction error of the calibration rule with Theorem~\ref{thm:anomaly}, using the exact $\Delta$ and $\sigma^2$ of each statistic computed from all labels. It pools 9 relational statistics, 16 development graphs and 5 seeds. The observed error never exceeds either bound. Both bounds are conservative: for margins above $0.2$, no error was observed at $k = 10$, while Hoeffding's bound allows $35\%$ and Bernstein's $16\%$. The variance-adaptive Bernstein bound is the tighter of the two throughout. Statistics with margin below $0.05$ are close to a coin flip at every $k$, as the theory predicts; the weight threshold of Proposition~\ref{prop:tau} is designed to discard exactly these.
 
 \begin{table}[t]
-\caption{Observed direction error of the anomaly-shot calibration rule against the bounds of Theorem~\ref{thm:anomaly}. Rows pool statistics by their margin $\Delta$; $n$ is the number of (statistic, graph, seed) cases. Development graphs only.}\label{tab:bound}
+\caption{Observed direction error of the anomaly-shot calibration rule against the bounds of Theorem~\ref{thm:anomaly}. Rows pool statistics by their margin $\Delta$ into five intervals, all of which are reported for every $k$; $n$ is the number of (statistic, graph, seed) cases. Development graphs only.}\label{tab:bound}
 \centering\small
 \begin{tabular}{@{}cl rrrr@{}}
 \toprule
 $k$ & $\Delta$ & $n$ & Observed & Hoeffding & Bernstein \\
 \midrule
-1  & $(0.00, 0.05]$ & 172 & 0.494 & 0.999 & 0.997 \\
-   & $(0.10, 0.20]$ & 155 & 0.361 & 0.956 & 0.915 \\
-   & $(0.30, 0.50]$ &  99 & 0.030 & 0.760 & 0.630 \\
-3  & $(0.00, 0.05]$ & 182 & 0.467 & 0.996 & 0.989 \\
-   & $(0.10, 0.20]$ & 158 & 0.152 & 0.876 & 0.770 \\
-   & $(0.30, 0.50]$ & 104 & 0.019 & 0.444 & 0.258 \\
-5  & $(0.00, 0.05]$ & 178 & 0.421 & 0.994 & 0.982 \\
-   & $(0.10, 0.20]$ & 138 & 0.188 & 0.795 & 0.647 \\
-   & $(0.30, 0.50]$ & 100 & 0.000 & 0.259 & 0.108 \\
+1 & $(0.00, 0.05]$ & 172 & 0.494 & 0.999 & 0.997 \\
+ & $(0.05, 0.10]$ & 123 & 0.374 & 0.988 & 0.973 \\
+ & $(0.10, 0.20]$ & 155 & 0.361 & 0.956 & 0.915 \\
+ & $(0.20, 0.30]$ & 113 & 0.177 & 0.898 & 0.828 \\
+ & $(0.30, 0.50]$ & 99 & 0.030 & 0.760 & 0.630 \\
+\midrule
+3 & $(0.00, 0.05]$ & 182 & 0.467 & 0.996 & 0.989 \\
+ & $(0.05, 0.10]$ & 131 & 0.229 & 0.964 & 0.920 \\
+ & $(0.10, 0.20]$ & 158 & 0.152 & 0.876 & 0.770 \\
+ & $(0.20, 0.30]$ & 120 & 0.092 & 0.725 & 0.571 \\
+ & $(0.30, 0.50]$ & 104 & 0.019 & 0.444 & 0.258 \\
+\midrule
+5 & $(0.00, 0.05]$ & 178 & 0.421 & 0.994 & 0.982 \\
+ & $(0.05, 0.10]$ & 116 & 0.353 & 0.939 & 0.865 \\
+ & $(0.10, 0.20]$ & 138 & 0.188 & 0.795 & 0.647 \\
+ & $(0.20, 0.30]$ & 120 & 0.050 & 0.587 & 0.396 \\
+ & $(0.30, 0.50]$ & 100 & 0.000 & 0.259 & 0.108 \\
+\midrule
 10 & $(0.00, 0.05]$ & 178 & 0.478 & 0.987 & 0.965 \\
-   & $(0.10, 0.20]$ & 139 & 0.072 & 0.639 & 0.429 \\
-   & $(0.20, 0.30]$ & 121 & 0.000 & 0.351 & 0.163 \\
-   & $(0.30, 0.50]$ & 100 & 0.000 & 0.073 & 0.015 \\
+ & $(0.05, 0.10]$ & 117 & 0.205 & 0.882 & 0.751 \\
+ & $(0.10, 0.20]$ & 139 & 0.072 & 0.639 & 0.429 \\
+ & $(0.20, 0.30]$ & 121 & 0.000 & 0.351 & 0.163 \\
+ & $(0.30, 0.50]$ & 100 & 0.000 & 0.073 & 0.015 \\
 \bottomrule
 \end{tabular}
 \end{table}

@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+Books,1418,3695,10,0.003999758999952974,0.3641462549999801,0.016474545999983548,0.38062080099996365,0.009200086000021201,0.2137895319999643

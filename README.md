@@ -36,7 +36,7 @@ pip install -r requirements.txt
 ## 2. Data and official baseline code
 
 ```bash
-python data/download_data.py              # public benchmark files from ARC, UNPrompt, CARE-GNN and PyGOD repositories
+python data/download_data.py              # benchmark files at the pinned repository commits; checks every SHA-256 (Appendix C)
 python fdc/get_official_baselines.py      # official GDN and BWGNN code at the commits used in the paper
 ```
 
@@ -79,8 +79,10 @@ python fdc/rev_extra_seeds.py Cora CiteSeer ...      # statistics for seeds 101-
 python fdc/rev_eval.py Cora CiteSeer ...             # all 20 graphs
 python fdc/rev_qL.py Amazon BlogCatalog CiteSeer Cora Tolokers Weibo-ARC YelpChi
 python fdc/rev_gdn20.py Cora CiteSeer ...            # all 20 graphs
-python fdc/rev_graph_level.py
+python fdc/rev_graph_level.py                      # graph-level tests; unrounded and paired per-run differences
+python fdc/rev_runtime.py Disney Books ...          # runtime, same timing scope for FDC and GDN
 python paper/make_graphlevel_table.py && python paper/make_revision_tables.py
+python paper/make_fig1.py && python paper/make_fig2.py && python paper/make_file_table.py
 
 # tables, figure and manuscript
 python paper/make_kais.py && python paper/build.py
@@ -135,7 +137,9 @@ diff protocols/frozen/step3.py fdc/step3.py
 | Sensitivity to c, k-gate, p (Table 12) and (q, L) (Table 13) | `results/revision/eval_*.csv`, `results/revision/qL_*.csv` |
 | Ablation and development history | `results/round1/ours.csv`, `results/rounds23/step2.csv`, `results/rounds23/step3.csv` |
 | Bound check (theory section) | `results/tables/bound_check.csv` |
-| Runtime | `results/tables/runtime.csv` |
+| Runtime (Table 14) | `results/revision/runtime_rev.csv`, `results/revision/runtime/` |
+| Direction diagnostic (Fig. 2, Table D1) | `results/tables/direction_diagnostic.csv` |
+| Benchmark files (Table C1) | `data/download_data.py` (commits and SHA-256) |
 
 ## Citation
 

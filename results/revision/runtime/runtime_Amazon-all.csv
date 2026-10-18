@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+Amazon-all,11944,4398392,10,0.8525242059999982,81.73004461200003,0.1531205219999947,81.88316513400002,0.0409002370000735,2.7053114100000357

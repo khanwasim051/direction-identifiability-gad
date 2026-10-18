@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+Weibo-ARC,8405,377271,10,0.05981529400003183,7.202929041999937,0.27978014199993595,7.482709183999873,0.02892645100007485,1.3836838910000324

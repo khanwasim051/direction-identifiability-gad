@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+Questions,48921,153540,10,0.0702179819999742,12.871359536,1.2764393100000007,14.147798846,0.19025508499998978,2.335043036000002

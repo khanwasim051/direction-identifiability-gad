@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+CS,18333,83993,10,0.6420094740000195,26.42538656100004,2.0725192830000196,28.49790584400006,0.06742617100002235,12.961535629999958

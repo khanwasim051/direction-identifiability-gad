@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+Enron,13533,176987,1,0.025606038999967495,5.337700608999967,0.06864103899999918,5.406341647999966,0.07739766099996359,0.7558549719999519

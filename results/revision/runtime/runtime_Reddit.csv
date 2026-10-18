@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+Reddit,10984,78516,10,0.02073900599998524,3.705240328000002,0.066029589999971,3.771269917999973,0.03936242999998285,0.5837928859999693

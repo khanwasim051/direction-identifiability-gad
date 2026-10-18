@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+PubMed,19717,46423,10,0.044090278999988186,4.807854785000018,0.39340952600002765,5.201264311000045,0.06904192999996894,1.1109991600000058

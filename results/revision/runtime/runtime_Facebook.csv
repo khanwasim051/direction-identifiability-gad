@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+Facebook,1081,27552,10,0.007741123000016614,0.5938149669999575,0.01596227799996086,0.6097772449999184,0.007177856999987853,0.2994905190000168

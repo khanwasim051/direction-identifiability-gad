@@ -42,7 +42,7 @@
 \affil[5]{\orgdiv{Department of Computer Engineering}, \orgname{Ajeenkya D Y Patil School of Engineering}, \city{Pune}, \country{India}}
 \affil[6]{\orgdiv{Department of Computer Engineering}, \orgname{Genba Sopanrao Moze College of Engineering}, \city{Pune}, \country{India}}
 
-\abstract{Training-free graph anomaly detectors score nodes with relational statistics and must decide, for each statistic, whether high or low values are anomalous. We show that this direction decides their performance and that its sign cannot be learned without labels: unlabelled data are consistent with anomalies in either tail, labelled normal nodes carry little information when anomalies are rare, and a few labelled anomalies identify the direction with an error that falls exponentially in their number. Building on these results, we propose few-shot direction calibration (FDC), a training-free method that orients and weights relational and attribute statistics using only $k$ labelled anomalies. We evaluate FDC on 16 development graphs and, after freezing the method, on four held-out graphs, against the official GDN and BWGNN given the same labels. On the development graphs FDC reaches a mean AUROC of 0.800 with ten labelled anomalies (GDN 0.645, BWGNN 0.527). On every held-out graph it has a higher AUROC than both baselines (mean 0.723 against 0.525 and 0.491; graph-level difference to GDN $+0.17$, 95\% bootstrap interval [0.07, 0.32]), also when they receive a labelled validation set; with four graphs this is a pre-specified transfer check rather than a high-powered test. In AUROC, FDC also beats the best single calibrated statistic and shot-similarity baselines and is insensitive to its settings, but on one held-out graph pooling lowers precision at the top of the ranking. All protocols were fixed before the corresponding results were seen.}
+\abstract{Training-free graph anomaly detectors score nodes with relational statistics and must decide, for each statistic, whether high or low values are anomalous. We show that this direction decides their performance and that its sign cannot be learned without labels: unlabelled data are consistent with anomalies in either tail, labelled normal nodes carry little information when anomalies are rare, and for any statistic whose anomalies are separated from the graph by a nonzero margin, a few labelled anomalies identify which tail is anomalous with an error that falls exponentially in their number at a rate set by that margin. Building on these results, we propose few-shot direction calibration (FDC), a training-free method that orients and weights relational and attribute statistics using only $k$ labelled anomalies. We evaluate FDC on 16 development graphs and, after freezing the method, on four held-out graphs, against the official GDN and BWGNN given the same labels. On the development graphs FDC reaches a mean AUROC of 0.800 with ten labelled anomalies (GDN 0.645, BWGNN 0.527). On every held-out graph it has a higher AUROC than both baselines (mean 0.723 against 0.525 and 0.491; graph-level difference to GDN $+0.17$, 95\% bootstrap interval [0.07, 0.32]), also when they receive a labelled validation set; with four graphs this is a pre-specified transfer check rather than a high-powered test. In AUROC, FDC also beats the best single calibrated statistic and shot-similarity baselines and is insensitive to its settings, but on one held-out graph pooling lowers precision at the top of the ranking. All protocols were fixed before the corresponding results were seen.}
 
 \keywords{Graph anomaly detection, Few-shot learning, Training-free detection, Identifiability, Positive-unlabelled learning, Pre-registration}
 
@@ -79,7 +79,7 @@ FDC is built on CoRe-GAD-MSDA, a training-free detector developed by the authors
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\textwidth]{fig/Fig1_detector.png}
+\includegraphics[width=\textwidth]{fig/Fig1_detector.pdf}
 \caption{Overview of the base detector CoRe-GAD-MSDA. Nine statistics are computed per node, calibrated as signed empirical ranks against a reference set that excludes the query and its neighbours, oriented by a tail direction, and fused with label-free reliability weights and a contextual/structural branch maximum. FDC (Section~\ref{sec:method}) replaces the fixed orientation with one calibrated from labelled anomalies and adds attribute statistics.}
 \label{fig:detector}
 \end{figure}
@@ -101,7 +101,9 @@ t_{i7}=\frac{|\mathcal{T}_i|}{d_i}, \qquad
 t_{i8}=\frac{1}{|\mathcal{U}_i|}\sum_{j\in\mathcal{U}_i}\delta_{ij}, \qquad
 t_{i9}=\frac{1}{|\mathcal{T}_i|}\sum_{(u,v)\in\mathcal{T}_i}\frac{\delta_{iu}+\delta_{iv}+\delta_{uv}}{3}.
 \end{equation}
-A statistic that is undefined for a node (for example $t_{i9}$ for a node in no triangle) is marked missing for that node. On dense graphs, triangle counts and motif sums are computed exactly with sparse matrix identities in row blocks.
+On dense graphs, triangle counts and motif sums are computed exactly with sparse matrix identities in row blocks.
+
+\paragraph{Isolated nodes and missing values.} A statistic is \emph{missing} for a node when its formula has no terms. For a node of degree $d_i$ this gives the following rules. For $d_i=0$ (an isolated node), $t_{i1}$, $t_{i5}$ and $t_{i8}$ are missing; for $d_i\le1$, $t_{i2}$, $t_{i3}$ and $t_{i4}$ are missing, since there is no neighbour pair; $t_{i9}$ is missing whenever $\mathcal{T}_i=\emptyset$, which includes every node with $d_i\le1$. Two statistics are defined for every node: $t_{i7}$ is set to $0$ when $d_i\le1$ (no triangle can exist), and $t_{i6}$ is defined because $\mathbf{h}_i=\tilde{\mathbf{x}}_i$ for an isolated node, giving $t_{i6}=0$ when its feature vector is non-zero. A node whose preprocessed feature vector is zero has cosine similarity $0$ with every node, so $\delta_{uv}=1$ in all its terms. Missing values are never imputed. They are excluded from every reference set $\mathcal{V}_j$, receive $M_{ij}=0$, and therefore contribute neither evidence nor weight in Eqs.~\eqref{eq:orient}--\eqref{eq:fusion}; a node all of whose statistics in a branch are missing scores 0 in that branch.
 
 \begin{table}[!ht]
 \caption{Relational statistics of the base detector and their fixed directions (U: upper tail anomalous; L: lower tail; 2: two-sided).}
@@ -154,7 +156,7 @@ Fig.~\ref{fig:diag} shows, for each graph and statistic, the AUROC of the orient
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\textwidth]{fig/Fig2_direction_diagnostic.pdf}
-\caption{AUROC of each statistic of the base detector on its own, in its fixed direction, averaged over five seeds. Blue: the fixed direction separates anomalies; red: it is reversed. Bold values are below 0.45. Motif incoherence is undefined on Reddit, which has no triangles.}
+\caption{AUROC of each statistic of the base detector on its own, in its fixed direction, averaged over five seeds. Blue: the fixed direction separates anomalies; red: it is reversed. Bold values are below 0.45. Motif incoherence is undefined on Reddit, which has no triangles. Appendix~\ref{app:diag} lists the same values in a table.}
 \label{fig:diag}
 \end{figure}
 
@@ -220,10 +222,10 @@ where $\bar e_{ij}$ is Eq.~\eqref{eq:orient} applied to $\bar r_{ij}$ with direc
 
 \section{Experimental setup}\label{sec:setup}
 
-\paragraph{Graphs.} Table~\ref{tab:datasets} lists the 20 graphs. Sixteen were used during development; four (Coauthor-CS and Amazon-Photo with injected anomalies, Books and Enron with organic anomalies) were held out and used once, for the confirmatory test of the frozen method. The held-out graphs are not untouched by the wider research process. In the earlier label-free rule study (Section~\ref{sec:rq4}) their labels were read once, to evaluate the frozen consensus rule, and the per-statistic diagnostic of Fig.~\ref{fig:diag} includes them. They were not used in any of the three development rounds of FDC, in choosing its statistics, or in the go/no-go and selection rules, and their labels were stored apart from the development labels. Only two of them contain organic anomalies, and Enron, with five anomalies, admits only $k=1$. Injected-anomaly graphs follow the conventional structural and contextual injection \citep{ding2019deep,liu2021cola,xu2022contrastive}; organic graphs follow the zero-shot protocols of UNPrompt and AnomalyGFM \citep{niu2025unprompt,qiao2025anomalygfm} and the sources cited there \citep{kumar2019predicting,mcauley2013amateurs,dou2020enhancing,sanchez2013statistical,zhao2020error,platonov2023critical,rayana2015collective,shchur2018pitfalls}. Two benchmarks exist in incompatible versions; we use the Weibo file distributed with ARC and report the file behind every graph.
+\paragraph{Graphs.} Table~\ref{tab:datasets} lists the 20 graphs. Sixteen were used during development; four (Coauthor-CS and Amazon-Photo with injected anomalies, Books and Enron with organic anomalies) were held out and used once, for the confirmatory test of the frozen method. The held-out graphs are not untouched by the wider research process. In the earlier label-free rule study (Section~\ref{sec:rq4}) their labels were read once, to evaluate the frozen consensus rule, and the per-statistic diagnostic of Fig.~\ref{fig:diag} includes them. They were not used in any of the three development rounds of FDC, in choosing its statistics, or in the go/no-go and selection rules, and their labels were stored apart from the development labels. Only two of them contain organic anomalies, and Enron, with five anomalies, admits only $k=1$. Injected-anomaly graphs follow the conventional structural and contextual injection \citep{ding2019deep,liu2021cola,xu2022contrastive}; organic graphs follow the zero-shot protocols of UNPrompt and AnomalyGFM \citep{niu2025unprompt,qiao2025anomalygfm} and the sources cited there \citep{kumar2019predicting,mcauley2013amateurs,dou2020enhancing,sanchez2013statistical,zhao2020error,platonov2023critical,rayana2015collective,shchur2018pitfalls}. Two benchmarks exist in incompatible versions; we use the Weibo file distributed with ARC. Appendix~\ref{app:data} identifies every file and describes the preprocessing and anomaly injection.
 
 \begin{table}[!ht]
-\caption{Benchmark graphs. Dev.: used during development of FDC; Held-out: used once, after the method was frozen.}
+\caption{Benchmark graphs. Dev.: used during development of FDC; Held-out: used once, after the method was frozen. Appendix~\ref{app:data} gives the file, repository commit and hash behind every graph, the preprocessing and the anomaly-injection settings.}
 \label{tab:datasets}
 \footnotesize
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrlll@{}}
@@ -242,6 +244,8 @@ Graph & Nodes & Edges & Feat. & Anomalies (rate) & Type & Source & Split \\
 \paragraph{Lightweight baselines.} To test whether FDC's gains come from its calibration or simply from using labelled anomalies, we added four training-free baselines that receive the same $k$ anomalies: the maximum and the mean cosine similarity of each node to the shots in FDC's attribute space $[\mathbf{Z}, \text{neighbour mean of }\mathbf{Z}]$ (ShotSim-max, ShotSim-centroid), a positive--unlabelled logistic regression on the same features with balanced class weights \citep{elkan2008learning}, and the single statistic with the largest estimated separation, oriented by the shots (BestSingleStat).
 
 \paragraph{Methods not compared under equal supervision.} ARC and AnomalyGFM use labelled \emph{normal} nodes in their few-shot modes, and UNPrompt, FreeGAD and NeighborDiv are zero-shot; none of them can use labelled anomalies, so a comparison with them would measure the supervision rather than the method. Section~\ref{sec:rq5} reports the normal-shot comparison of the base detector with ARC and AnomalyGFM. BWGNN was run on a separate Windows machine with the official CPU code and DGL 2.2.1; a check run on Cora reproduced, to all printed digits, the values of an independent implementation of the same graph operations on the development machine.
+
+\paragraph{Computing environment.} All experiments except BWGNN ran in one Linux container (Ubuntu 24.04) with two virtual CPU cores of an Intel Xeon processor at 2.10\,GHz, 8\,GB of memory and no GPU, using Python 3.13, NumPy 2.5, SciPy 1.18, scikit-learn 1.9 and PyTorch 2.7 (CPU). BWGNN, whose official code needs DGL, ran on a Windows laptop (16 logical cores, 16\,GB of memory, CPU only) with Python 3.11, PyTorch 2.3 and DGL 2.2.1.
 
 \paragraph{Development and freezing.} FDC was developed in three rounds on the development graphs, each with a protocol written and hashed before it was run (Appendix~\ref{app:prereg}). Round~1 tested relational-only calibration against a pre-specified go/no-go rule. Round~2 added attribute statistics in three pre-specified variants and a selection rule that also required the injected-graph mean to fall by no more than 0.02; the best variant failed that condition and was not adopted. Round~3 tested two variants aimed at that failure, and the $k$-gated variant, FDC, passed. The code and protocols were then hashed into a freeze record before any held-out label was read, and a confirmatory protocol fixed three claims for the held-out test: (C1) the mean AUROC of FDC is at least that of the better baseline per combination minus 0.01; (C2) FDC beats the better baseline in at least half of the combinations; (C3) FDC is at least as good as FDC-R. The SHA-256 hashes establish that the protocols and code were not changed after hashing, but not when they were written; the commits in the public repository are timestamped only from the date of upload. A registry with independent timestamps, such as OSF, would close this gap and will be used for future work.
 
@@ -272,10 +276,10 @@ $k$ & Fixed & FDC-R & FDC & GDN & BWGNN & GDN$^{\dagger}$ & BWGNN$^{\dagger}$ & 
 \label{fig:k}
 \end{figure}
 
-Table~\ref{tab:pergraph} reports per-graph results at $k=10$. FDC is strongest on the injected-anomaly graphs (0.70--0.97) and on Amazon, Amazon-all and Weibo (0.90--0.95), where the attribute statistics add most to FDC-R (for example 0.682 to 0.899 on Amazon). It loses to the official baselines on three graphs: Facebook, where GDN is almost perfect (0.992 against 0.972); Questions (0.579 against 0.612); and Tolokers (0.645 against 0.661). Questions, Tolokers, Reddit and YelpChi-all remain hard for every method. BWGNN's last-epoch scores are often below 0.5. With few positives and every other node treated as negative, it fits the labelled anomalies' neighbourhoods rather than the anomaly pattern; its validation-selected variant partly repairs this.
+Table~\ref{tab:pergraph} reports per-graph results at $k=10$ (Disney, with six anomalies, at $k=3$). FDC is strongest on the injected-anomaly graphs (0.70--0.97) and on Amazon, Amazon-all and Weibo (0.90--0.95), where the attribute statistics add most to FDC-R (for example 0.682 to 0.899 on Amazon). It loses to the official baselines on three graphs: Facebook, where GDN is almost perfect (0.992 against 0.972); Questions (0.579 against 0.612); and Tolokers (0.645 against 0.661). Questions, Tolokers, Reddit and YelpChi-all remain hard for every method. BWGNN's last-epoch scores are often below 0.5. With few positives and every other node treated as negative, it fits the labelled anomalies' neighbourhoods rather than the anomaly pattern; its validation-selected variant partly repairs this.
 
 \begin{table}[!ht]
-\caption{AUROC on the development graphs at $k=10$ (mean, with standard deviation over five seeds for the three main methods). $^{\ast}$Disney has six anomalies and is shown at $k=3$. Bold: best of FDC, GDN and BWGNN.}
+\caption{AUROC on the development graphs at $k=10$, except Disney$^{\ast}$, which has only six anomalies and is therefore shown at $k=3$ (mean, with standard deviation over five seeds for the three main methods). Bold: best of FDC, GDN and BWGNN.}
 \label{tab:pergraph}
 \scriptsize
 \setlength{\tabcolsep}{2.4pt}
@@ -312,7 +316,7 @@ The runs within one graph share its nodes, edges and anomalies, so combinations 
 On the held-out graphs FDC has the higher AUROC on all four graphs against each of the four baselines. With four graphs, however, the smallest attainable sign-test $p$-value is $2^{-4}=0.0625$, so the held-out test cannot reach conventional significance at the graph level, whatever the effect. What it does show is an effect whose bootstrap interval excludes zero: $+0.174$ [0.072, 0.323] against GDN, $+0.218$ [0.085, 0.434] against BWGNN, and $+0.077$ [0.013, 0.169] against GDN with a labelled validation set. On the development graphs the differences against the last-epoch baselines are significant ($p\le0.0004$), and so is the difference against BWGNN$^{\dagger}$ ($p=0.0065$); against GDN$^{\dagger}$ it is not ($+0.035$, $p=0.072$). For AP the held-out evidence is weaker: FDC is ahead of BWGNN on three of the four graphs and its interval includes zero. FDC is not significantly better than FDC-R on the held-out graphs in either metric. We regard the held-out test as a pre-specified check that the frozen method transfers, not as a significance test with adequate power. Tests over (graph, $k$) combinations would treat correlated runs of the same graph as independent and overstate the evidence, and we do not use them.
 
 \begin{table}[!ht]
-\caption{Graph-level comparison of FDC with each method (five seeds). $\Delta$: mean over graphs of the per-graph mean difference (FDC minus method), with a 95\% hierarchical bootstrap interval; Wins: graphs on which FDC is ahead; $p$: one-sided test over graphs. With four graphs the smallest possible sign-test $p$ is 0.0625.}
+\caption{Graph-level comparison of FDC with each method (five seeds). $\Delta$: mean over graphs of the per-graph mean difference (FDC minus method), with a 95\% hierarchical bootstrap interval; Wins: graphs on which FDC is ahead; $p$: one-sided test over graphs. With four graphs the smallest possible sign-test $p$ is 0.0625. Unrounded per-graph differences and the paired per-run results behind them are provided in the code repository (\texttt{results/revision/}).}
 \label{tab:graphlevel}
 \scriptsize
 \setlength{\tabcolsep}{2.5pt}
@@ -437,15 +441,15 @@ $q$ & $L$ & Fixed & FDC-R & FDC & FDC nAP \\
 
 \subsection{Runtime}\label{sec:runtime}
 
-Table~\ref{tab:runtime} reports wall-clock times on the same two-core machine for one run at the largest valid $k$. FDC's time is dominated by computing the statistics, from 0.05\,s on Disney to 111\,s on Amazon-all ($4.4\times10^6$ edges); calibration with the labelled anomalies takes at most 0.24\,s on any graph. The official GDN, whose model is a two-layer linear network on precomputed propagated features, is faster on most graphs. The practical advantage of FDC is therefore not speed of a single run: it needs no training, and once the statistics are computed, adding or correcting labelled anomalies costs a fraction of a second.
+Table~\ref{tab:runtime} reports wall-clock times for one run at the largest valid $k$, measured in the computing environment of Section~\ref{sec:setup} with two CPU threads. Both methods are timed from the graph held in memory: loading the file from disk (at most 0.9\,s) is excluded from both, and an untimed warm-up run absorbs PyTorch's one-off initialisation. For FDC the time is dominated by the label-independent preprocessing, from 0.07\,s on Disney to 82\,s on Amazon-all ($4.4\times10^6$ edges); calibration with the labelled anomalies takes at most 0.20\,s on any graph. The official GDN, a linear model on precomputed propagated features, is faster on 19 of the 20 graphs. The practical advantage of FDC is therefore not the speed of a single run: it needs no training, and once the preprocessing is done, adding or correcting labelled anomalies costs a fraction of a second.
 
 \begin{table}[!ht]
-\caption{Wall-clock time in seconds for one run (seed 11, largest valid $k$) on a two-core machine. FDC statistics: relational and attribute statistics (computed once per graph); FDC calibration: orientation, weighting and scoring with the labelled anomalies.}
+\caption{Wall-clock time in seconds for one run (seed 11, largest valid $k$; two CPU threads; loading from disk excluded). FDC preprocessing: feature preprocessing, the nine relational statistics with their neighbourhood-excluded and graph-wide ranks, and the attribute statistics with their ranks (label-independent, once per graph). FDC calibration: orientation, weighting and scoring of all nodes with the $k$ labelled anomalies. GDN: adjacency normalisation, two-step feature propagation, 100 training epochs and scoring of all nodes (official code, last-epoch variant).}
 \label{tab:runtime}
 \footnotesize
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrr@{}}
 \toprule
-Graph & Nodes & Edges & FDC statistics & FDC calibration & GDN (official) \\
+Graph & Nodes & Edges & FDC preprocessing & FDC calibration & GDN (official) \\
 \midrule
 \input{gen/tab_runtime.tex}
 \botrule
@@ -509,6 +513,47 @@ Confirmatory test & \texttt{CONFIRMATORY\_PROTOCOL.md} & \texttt{f75b980c629185f
 \botrule
 \end{tabular}
 \end{table}
+
+\section{Benchmark files, preprocessing and anomaly injection}\label{app:data}
+\setcounter{table}{0}
+
+Table~\ref{tab:files} identifies every benchmark file: its name, the repository and commit from which it was obtained, and the first 12 hexadecimal digits of its SHA-256 hash; \texttt{data/download\_data.py} in the code repository downloads the files and checks the hashes. Each file is read as distributed. The adjacency matrix is symmetrised ($\mathbf{A}\leftarrow\max(\mathbf{A},\mathbf{A}^{\top})$), self-loops are removed and edge weights are set to 1; labels are binarised (any non-zero label is an anomaly); features are read as stored and then preprocessed as in Section~\ref{sec:detector} (median imputation of non-finite entries, removal of constant columns, column standardisation and row normalisation). Edge counts in Table~\ref{tab:datasets} are undirected edges after this cleaning. No node or edge is removed.
+
+We did not inject anomalies ourselves. The injected-anomaly files follow the protocol of \citet{ding2019deep}, used by CoLA and ARC \citep{liu2021cola,liu2024arc}: structural anomalies are $m$ cliques of 15 nodes formed by adding edges among randomly chosen nodes, and an equal number of contextual anomalies have their attributes replaced by those of the most distant of 50 randomly chosen nodes. We checked the structural part in each file: the anomalous nodes contain exactly the $m$ cliques of 15 nodes listed in Table~\ref{tab:files}, and the files that store separate structural and contextual labels contain 15$m$ of each. ACM stores no per-type labels and has 597 anomalies for 20 cliques. The Facebook file is an exception: it contains no clique of five or more anomalous nodes, and its 25 anomalies come from \citet{xu2022contrastive}, so it does not follow the clique protocol. It was grouped with the injected graphs in the round-1 protocol, as in the earlier study, and we keep that grouping because the round-2 and round-3 selection rules were applied with it. The grouping matters for one decision. With Facebook counted as organic, FDC's injected-graph mean would be 0.0215 below that of FDC-R in round 3, just outside the pre-specified tolerance of 0.02, instead of 0.0137; the overall means, which do not depend on the grouping, are unchanged. Organic-anomaly files are used with the labels supplied by their sources.
+
+\begin{table}[h]
+\caption{Benchmark files. Commit: repository commit from which the file was obtained. Injection: number of 15-node cliques among the anomalies / number of contextual anomalies stored in the file. $^{a}$Used only in Fig.~\ref{fig:diag}. $^{b}$See text.}
+\label{tab:files}
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llllll@{}}
+\toprule
+Graph & File & Source & Commit & SHA-256 & Injection \\
+\midrule
+\input{gen/tab_files.tex}
+\botrule
+\end{tabular*}
+\end{table}
+
+\section{Values of the direction diagnostic}\label{app:diag}
+\setcounter{table}{0}
+
+Table~\ref{tab:diag} gives the values shown in Fig.~\ref{fig:diag} to three decimals; the same values are provided as a CSV file in the code repository.
+
+\begin{table}[h]
+\caption{AUROC of each statistic of the base detector on its own, in its fixed direction (U, L or two-sided, as in Table~\ref{tab:stats}), averaged over five seeds. Bold: below 0.45. --: undefined.}
+\label{tab:diag}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccccccc@{}}
+\toprule
+Graph & $t_1$ & $t_2$ & $t_3$ & $t_4$ & $t_5$ & $t_6$ & $t_7$ & $t_8$ & $t_9$ \\
+\midrule
+\input{gen/tab_diag.tex}
+\botrule
+\end{tabular*}
+\end{table}
+\clearpage
 
 \end{appendices}
 

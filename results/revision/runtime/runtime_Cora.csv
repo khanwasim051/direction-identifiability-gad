@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+Cora,2708,5802,10,0.02442172000002074,0.9176037049999763,0.05716912799999818,0.9747728329999745,0.011918701000013243,0.5059832850000134

@@ -30,7 +30,7 @@ def boot(df, B=10000):
     return np.percentile(out, [2.5, 97.5])
 
 
-rows, per_graph = [], []
+rows, per_graph, paired = [], [], []
 for split in ("held-out", "development"):
     for base in COMP:
         for metric in ("auroc", "ap"):
@@ -42,10 +42,12 @@ for split in ("held-out", "development"):
             else:
                 p = wilcoxon(g, alternative="greater").pvalue; test = "wilcoxon"
             lo, hi = boot(df)
-            rows.append(dict(split=split, baseline=base, metric=metric, graphs=len(g), wins=wins, mean_diff=round(g.mean(), 3),
-                             ci_low=round(lo, 3), ci_high=round(hi, 3), test=test, p=p))
-            if metric == "auroc":
-                for name, v in g.items(): per_graph.append(dict(split=split, baseline=base, dataset=name, diff=round(v, 3)))
+            paired.append(df.assign(split=split, baseline=base, metric=metric))
+            rows.append(dict(split=split, baseline=base, metric=metric, graphs=len(g), wins=wins, mean_diff=g.mean(),
+                             ci_low=lo, ci_high=hi, test=test, p=p))
+            if True:
+                for name, v in g.items(): per_graph.append(dict(split=split, baseline=base, metric=metric, dataset=name, diff=v))
 R = pd.DataFrame(rows); R.to_csv(RES / "revision" / "graph_level.csv", index=False)
 pd.DataFrame(per_graph).to_csv(RES / "revision" / "graph_level_per_graph.csv", index=False)
+pd.concat(paired).to_csv(RES / "revision" / "graph_level_paired_runs.csv", index=False)
 print(R.to_string())

@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+Disney,124,335,3,0.002367473999925096,0.048489706999930604,0.022593034000010448,0.07108274099994105,0.005004867000025115,0.14156989000002795

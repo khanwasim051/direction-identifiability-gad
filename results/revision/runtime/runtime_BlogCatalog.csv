@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+BlogCatalog,5196,172779,10,0.28714765900002703,28.743721919999984,0.5351431459999958,29.27886506599998,0.01817517200004204,16.85782084099992

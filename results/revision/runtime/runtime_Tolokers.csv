@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+Tolokers,11758,519000,10,0.02661435499999243,9.276213247999976,0.0360827929999914,9.312296040999968,0.043248962999996365,0.7005288400000609

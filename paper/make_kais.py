@@ -132,14 +132,14 @@ for m, d, rd in desc:
 open(f"{G}/tab_ablation.tex", "w").write("\n".join(rows))
 
 # ---------------- Table: runtime ----------------
-rt = pd.read_csv(f"{RES_TAB}/runtime.csv").sort_values("edges")
+rt = pd.read_csv(f"{RES_TAB}/../revision/runtime_rev.csv").sort_values("edges")   # revision: same timing scope for both methods
 rows = []
 for _, r in rt.iterrows():
-    rows.append(f"{NAME.get(r.dataset, r.dataset)} & {r.nodes:,} & {r.edges:,} & {r.final_statistics_s + r.final_attribute_s:.2f} & "
-                f"{r.final_calibration_s:.3f} & {r.gdn_official_s:.2f} \\\\")
+    rows.append(f"{NAME.get(r.dataset, r.dataset)} & {r.nodes:,} & {r.edges:,} & {r.fdc_preprocessing_s:.2f} & "
+                f"{r.fdc_calibration_s:.3f} & {r.gdn_official_s:.2f} \\\\")
 open(f"{G}/tab_runtime.tex", "w").write("\n".join(rows))
-NUM["runtime"] = {"cal_max": float(rt.final_calibration_s.max()), "stat_min": float((rt.final_statistics_s + rt.final_attribute_s).min()),
-                  "stat_max": float((rt.final_statistics_s + rt.final_attribute_s).max())}
+NUM["runtime"] = {"cal_max": float(rt.fdc_calibration_s.max()), "stat_min": float(rt.fdc_preprocessing_s.min()),
+                  "stat_max": float(rt.fdc_preprocessing_s.max())}
 
 # ---------------- Table: datasets ----------------
 src = open(REPO / "paper" / "dataset_statistics.tex").read().strip().split("\n")

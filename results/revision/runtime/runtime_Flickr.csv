@@ -1,0 +1,2 @@
+dataset,nodes,edges,k,load_s,fdc_relational_s,fdc_attribute_s,fdc_preprocessing_s,fdc_calibration_s,gdn_official_s
+Flickr,7575,241301,10,0.5514302909999742,52.503620529000045,1.4522016010000698,53.955822130000115,0.02708866799991938,28.790502779999997

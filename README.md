@@ -81,6 +81,7 @@ python fdc/rev_qL.py Amazon BlogCatalog CiteSeer Cora Tolokers Weibo-ARC YelpChi
 python fdc/rev_gdn20.py Cora CiteSeer ...            # all 20 graphs
 python fdc/rev_graph_level.py                      # graph-level tests; unrounded and paired per-run differences
 python fdc/rev_runtime.py Disney Books ...          # runtime, same timing scope for FDC and GDN
+python fdc/rev_missing_shots.py                     # how often |S_j| < k; threshold variant with tau_|S_j| (not frozen)
 python paper/make_graphlevel_table.py && python paper/make_revision_tables.py
 python paper/make_fig1.py && python paper/make_fig2.py && python paper/make_file_table.py
 

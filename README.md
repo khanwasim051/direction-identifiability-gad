@@ -8,8 +8,6 @@ Code, protocols and results for the paper
 
 Training-free graph anomaly detectors score nodes with relational statistics and must decide, for each statistic, whether high or low values are anomalous. The paper proves that this direction cannot be identified from unlabelled data, that labelled normal nodes carry little information about it when anomalies are rare, and that a few labelled anomalies identify it at an exponential rate. **FDC** (few-shot direction calibration) uses only *k* labelled anomalies to orient and weight relational and attribute statistics, with no training. It is compared with the official GDN and BWGNN under identical supervision on 16 development graphs and, after the method was frozen, on 4 held-out graphs.
 
-The previous version of this repository (the empirical analysis paper on direction identifiability) is preserved in the branch [`v1-analysis-paper`](https://github.com/khanwasim051/direction-identifiability-gad/tree/v1-analysis-paper).
-
 ## Repository layout
 
 | Folder | Contents |
